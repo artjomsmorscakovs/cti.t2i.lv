@@ -5,6 +5,8 @@
  * 
  */
  
+ require_once("./lib/jsonhandler.php");
+ 
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     throw new Exception('Request method must be POST!');
@@ -20,7 +22,7 @@ if(strcasecmp($contentType, 'application/json') != 0){
 $content = trim(file_get_contents("php://input"));
  
 //Attempt to decode the incoming RAW post data from JSON.
-$decoded = json_decode($content, true);
+$decoded = JsonHandler::decode($string, true);
  
 //If json_decode failed, the JSON is invalid.
 if(!is_array($decoded)){
@@ -29,6 +31,7 @@ if(!is_array($decoded)){
 
 $string_data = serialize($decoded);
 file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
- 
+
+ print_r($decoded);
 //Process the JSON.
 ?>
