@@ -22,7 +22,7 @@ if(strcasecmp($contentType, 'application/json') != 0){
 $content = trim(file_get_contents("php://input"));
  
 //Attempt to decode the incoming RAW post data from JSON.
-$decoded = JsonHandler::decode($string, true);
+$decoded = JsonHandler::decode($content, true);
  
 //If json_decode failed, the JSON is invalid.
 if(!is_array($decoded)){
