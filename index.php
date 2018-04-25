@@ -1,4 +1,3 @@
 <?php
-	echo "Hello world with GIT support!!!";
-	echo "Updated!!!!>>";
+	echo "<h1>Nothing to find here</h1>";
 ?>
