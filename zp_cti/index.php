@@ -28,7 +28,7 @@ if(!is_array($decoded)){
 }
 
 $string_data = serialize($decoded);
-file_put_contents("/zp_cti/request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
+file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
  
 //Process the JSON.
 ?>
