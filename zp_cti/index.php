@@ -28,7 +28,7 @@ $content = trim(file_get_contents("php://input"));
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = JsonHandler::decode($content);
 
-print_r($decoded);
+//print_r($decoded);
  
 //If json_decode failed, the JSON is invalid.
 /*
@@ -39,8 +39,10 @@ if(!is_array($decoded)){
 
 $string_data = serialize($decoded);
 
+$classname = $decoded->eventType.'Event';
+
 $mapper = new JsonMapper();
-$requestObject = $mapper->map($decoded, new CallStartedEvent());
+$requestObject = $mapper->map($decoded, new $classname());
 
 print_r($requestObject);
 echo 'requestObject1';
