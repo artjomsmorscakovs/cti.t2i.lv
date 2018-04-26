@@ -6,7 +6,7 @@
  */
  
  require_once("./lib/jsonhandler.php");
- require_once './lib/requestfilelog.php';
+ require_once './lib/RequestFileLog.php.php';
  require_once './lib/JsonMapper.php';
  require_once './lib/Events/CallStartedEvent.php';
  
@@ -39,14 +39,13 @@ $string_data = serialize($decoded);
 $mapper = new JsonMapper();
 $requestObject = $mapper->map($decoded, new CallStartedEvent());
 
-//$logger = new RequestFileLog();
-
-
 print_r($requestObject);
 echo 'requestObject1';
-//
-//$logger->logRequest($requestObject);
 
+
+$logger = new RequestFileLog();
+$logger->logRequest($requestObject);
+echo 'logRequest';
 //print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
 //echo 'DOCUMENT_ROOT';
 // $filelog = new RequestFileLog('zp_cti/request_log/966/in/2018/04/26');

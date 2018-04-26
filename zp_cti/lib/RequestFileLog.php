@@ -10,8 +10,12 @@ class RequestFileLog {
 		$this->checkFolderExists($this->basepath);
 	}
 	
-	function logRequest($request){
-		
+	function logRequest(Event $request){
+		$this->checkFolderExists($request->folderpath);
+		$arrdata = (array) $request;
+		if(is_array($arrdata)){
+			$this->log($this->basepath.$request->filename, print_r($string_data,TRUE));
+		}
 	}
 	
 	
@@ -21,8 +25,12 @@ class RequestFileLog {
 		
 		if (!file_exists($this->basepath)) {
 		    mkdir($this->basepath, 0775, true);
-			return 'folders created';
 		}
+	}
+	
+	private function log($file, $string_data){
+		
+		file_put_contents($file, $string_data);
 	}
 }
 ?>
