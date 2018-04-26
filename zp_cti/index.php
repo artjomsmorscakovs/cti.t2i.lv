@@ -25,7 +25,7 @@ if(strcasecmp($contentType, 'application/json') != 0){
 $content = trim(file_get_contents("php://input"));
  
 //Attempt to decode the incoming RAW post data from JSON.
-$decoded = JsonHandler::decode($content, true);
+$decoded = JsonHandler::decode($content);
  
 //If json_decode failed, the JSON is invalid.
 if(!is_array($decoded)){
@@ -35,7 +35,7 @@ if(!is_array($decoded)){
 $string_data = serialize($decoded);
 
 $mapper = new JsonMapper();
-$requestObject = $mapper->map($content, new CallStartedEvent());
+$requestObject = $mapper->map($decoded, new CallStartedEvent());
 
 print_r($requestObject);
 echo 'requestObject';
