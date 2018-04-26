@@ -13,10 +13,7 @@ class CallCompletedEvent extends Event{
 */
 
     
-    }  
-
-}
-
+    }
  
 
 
