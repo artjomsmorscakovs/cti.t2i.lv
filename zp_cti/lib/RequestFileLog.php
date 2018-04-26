@@ -19,7 +19,6 @@ class RequestFileLog {
 	}
 	
 	
-	
 	private function checkFolderExists($folder){
 		$this->basepath = $_SERVER[ 'DOCUMENT_ROOT' ].DIRECTORY_SEPARATOR.$folder;
 		

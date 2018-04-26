@@ -6,7 +6,7 @@
  */
  
  require_once("./lib/jsonhandler.php");
- require_once './lib/RequestFileLog.php.php';
+ require_once './lib/RequestFileLog.php';
  require_once './lib/JsonMapper.php';
  require_once './lib/Events/CallStartedEvent.php';
  
