@@ -45,6 +45,10 @@ class Event {
 		$datearr['second'] = str_pad($datearr['second'], 2, "0", STR_PAD_LEFT);
 		
 		return 	$datearr;
-	}		
+	}
+	
+    public function __toArray(){
+        return call_user_func('get_object_vars', $this);
+    }	
 }
 ?>
