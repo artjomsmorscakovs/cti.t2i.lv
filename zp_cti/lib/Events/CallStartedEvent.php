@@ -12,11 +12,7 @@ class CallStartedEvent extends Event{
 	protected	$filename;
 */
 	
-	public function setData($data){
-		$this->data = $data;
-		$this->parseFolderPath($data);
-		
-	}
+
 	
  
 
