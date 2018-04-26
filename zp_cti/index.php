@@ -39,9 +39,12 @@ $string_data = serialize($decoded);
 $mapper = new JsonMapper();
 $requestObject = $mapper->map($decoded, new CallStartedEvent());
 
-print_r($requestObject);
-echo 'requestObject';
 //$logger = new RequestFileLog();
+
+
+print_r($requestObject);
+echo 'requestObject1';
+//
 //$logger->logRequest($requestObject);
 
 //print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
