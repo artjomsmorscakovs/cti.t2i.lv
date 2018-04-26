@@ -14,7 +14,7 @@ class RequestFileLog {
 		$this->checkFolderExists($request->folderpath);
 		$arrdata = (array) $request;
 		if(is_array($arrdata)){
-			$this->log($this->basepath.$request->filename, print_r($string_data,TRUE));
+			$this->log($this->basepath.$request->filename, print_r($arrdata,TRUE));
 		}
 	}
 	
