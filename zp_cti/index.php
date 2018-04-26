@@ -6,6 +6,7 @@
  */
  
  require_once("./lib/jsonhandler.php");
+ require_once './lib/requestfilelog.php';
  
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
@@ -30,8 +31,10 @@ if(!is_array($decoded)){
 }
 
 $string_data = serialize($decoded);
-file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
 
- print_r($decoded);
+$filelog = new RequestFileLog('zp_cti/request_log/966/2018/04/26');
+//file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
+
+ print_r($filelog);
 //Process the JSON.
 ?>
