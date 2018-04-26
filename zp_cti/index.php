@@ -8,6 +8,7 @@
  require_once("./lib/jsonhandler.php");
  require_once './lib/RequestFileLog.php';
  require_once './lib/JsonMapper.php';
+  // require_once './lib/Events/Event.php';
  require_once './lib/Events/CallStartedEvent.php';
  
 //Make sure that it is a POST request.
