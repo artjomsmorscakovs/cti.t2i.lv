@@ -8,7 +8,7 @@ class CallStartedEvent{
 	
 	public function setData($data){
 		$this->data = $data;
-		$this->datetime = $data['callStarted'];
+		$this->datetime = $data->callStarted;
 	}
 }
 
