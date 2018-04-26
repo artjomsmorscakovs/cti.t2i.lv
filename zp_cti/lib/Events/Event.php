@@ -25,6 +25,15 @@ class Event {
 		$sep = "_";
 		if(!empty($datetime)){
 			$datearr = date_parse($datetime);
+			$datearr['month'] = str_pad($datearr['month'], 2, "0", STR_PAD_LEFT);
+			$datearr['day'] = str_pad($datearr['day'], 2, "0", STR_PAD_LEFT);
+			$datearr['hour'] = str_pad($datearr['hour'], 2, "0", STR_PAD_LEFT);
+			$datearr['minute'] = str_pad($datearr['minute'], 2, "0", STR_PAD_LEFT);
+			$datearr['second'] = str_pad($datearr['second'], 2, "0", STR_PAD_LEFT);
+			
+			
+			
+			
 			$result = $datearr['year'].$sep.$datearr['month'].$sep.$datearr['day'].$sep.$datearr['hour'].$sep.$datearr['minute'].$sep.$datearr['second'];
 		}else {
 			$result = date('Y_m_d_H_i_s');
