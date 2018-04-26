@@ -3,11 +3,8 @@
 class RequestFileLog {
 	private $basepath;
 	
-	function __construct($folder){
+	function __construct(){
 		//cti.t2i.lv/zp_cti/request_log
-
-		
-		$this->checkFolderExists($this->basepath);
 	}
 	
 	function logRequest(Event $request){
