@@ -10,7 +10,7 @@ class RequestFileLog {
 	function logRequest(Event $request){
 		$this->checkFolderExists($request->getFolderPath());
 		
-		$this->log($this->basepath.$request->getFileName(), print_r($request->__toArray(),TRUE));
+		$this->log($this->basepath.$request->getFileName(), print_r(get_object_vars($request),TRUE));
 	}
 	
 	
