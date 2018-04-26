@@ -1,5 +1,5 @@
 <?php
-require_once '../Event.php';
+require_once 'Event.php';
 
 class CallStartedEvent extends Event{
 	public  $type;
