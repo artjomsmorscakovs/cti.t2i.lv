@@ -32,9 +32,10 @@ if(!is_array($decoded)){
 
 $string_data = serialize($decoded);
 
-print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
-echo 'DOCUMENT_ROOT';
-//$filelog = new RequestFileLog('zp_cti/request_log/966/2018/04/26');
+//print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
+//echo 'DOCUMENT_ROOT';
+$filelog = new RequestFileLog('zp_cti/request_log/966/2018/04/25');
+echo '25';
 //file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
 
  //print_r($filelog);

@@ -5,7 +5,7 @@ class RequestFileLog {
 	
 	function __construct($folder){
 		//cti.t2i.lv/zp_cti/request_log
-		$this->basepath = $_SERVER['HTTP_HOST'].DIRECTORY_SEPARATOR.$folder;
+		$this->basepath = $_SERVER[ 'DOCUMENT_ROOT' ].DIRECTORY_SEPARATOR.$folder;
 		
 		$this->checkFolderExists($this->basepath);
 	}
