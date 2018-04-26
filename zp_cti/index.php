@@ -35,7 +35,7 @@ if(!is_array($decoded)){
 $string_data = serialize($decoded);
 
 $mapper = new JsonMapper();
-$requestObject = $mapper->map($decoded, new CallStartedEvent());
+$requestObject = $mapper->map($content, new CallStartedEvent());
 
 print_r($requestObject);
 echo 'requestObject';
