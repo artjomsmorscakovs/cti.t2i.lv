@@ -5,20 +5,22 @@ class RequestFileLog {
 	
 	function __construct($folder){
 		//cti.t2i.lv/zp_cti/request_log
-		$this->basepath = $_SERVER[ 'DOCUMENT_ROOT' ].DIRECTORY_SEPARATOR.$folder;
+
 		
 		$this->checkFolderExists($this->basepath);
 	}
 	
-	function logRequest($clientId, $type, $direction, $args = array()){
-				
+	function logRequest($request){
+		
 	}
 	
 	
 	
-	function checkFolderExists($folder){
-		if (!file_exists($folder)) {
-		    mkdir($folder, 0775, true);
+	private function checkFolderExists($folder){
+		$this->basepath = $_SERVER[ 'DOCUMENT_ROOT' ].DIRECTORY_SEPARATOR.$folder;
+		
+		if (!file_exists($this->basepath)) {
+		    mkdir($this->basepath, 0775, true);
 			return 'folders created';
 		}
 	}
