@@ -12,10 +12,6 @@ class CallStartedEvent extends Event{
 	protected	$filename;
 */
 
-	
- 
-
-	
 }
 
 ?>
