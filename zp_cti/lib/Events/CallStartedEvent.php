@@ -6,9 +6,9 @@ class CallStartedEvent extends Event{
 	public  $eventType;
 	public  $version;
 	public  $data;
-	public  $datetime;
-	public	$folderpath;
-	public	$filename;
+	protected  $datetime;
+	protected	$folderpath;
+	protected	$filename;
 	
 	public function setData($data){
 		$this->data = $data;
