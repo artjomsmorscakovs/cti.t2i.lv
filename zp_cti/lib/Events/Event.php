@@ -12,6 +12,8 @@ class Event {
 		$result = '' ;
 		if(!empty($datetime)){
 			$datearr = date_parse($datetime);
+			$datearr = $this->strpaddate($datearr);
+			
 			$result = $datearr['year'].DIRECTORY_SEPARATOR.$datearr['month'].DIRECTORY_SEPARATOR.$datearr['day'];
 		}else {
 			$result = date('Y/m/d');
@@ -25,14 +27,7 @@ class Event {
 		$sep = "_";
 		if(!empty($datetime)){
 			$datearr = date_parse($datetime);
-			$datearr['month'] = str_pad($datearr['month'], 2, "0", STR_PAD_LEFT);
-			$datearr['day'] = str_pad($datearr['day'], 2, "0", STR_PAD_LEFT);
-			$datearr['hour'] = str_pad($datearr['hour'], 2, "0", STR_PAD_LEFT);
-			$datearr['minute'] = str_pad($datearr['minute'], 2, "0", STR_PAD_LEFT);
-			$datearr['second'] = str_pad($datearr['second'], 2, "0", STR_PAD_LEFT);
-			
-			
-			
+			$datearr = $this->strpaddate($datearr);
 			
 			$result = $datearr['year'].$sep.$datearr['month'].$sep.$datearr['day'].$sep.$datearr['hour'].$sep.$datearr['minute'].$sep.$datearr['second'];
 		}else {
@@ -40,6 +35,16 @@ class Event {
 		}
 		//return 2018/04/26
 		return $result;
+	}
+	
+	private function strpaddate($datearr){
+		$datearr['month'] = str_pad($datearr['month'], 2, "0", STR_PAD_LEFT);
+		$datearr['day'] = str_pad($datearr['day'], 2, "0", STR_PAD_LEFT);
+		$datearr['hour'] = str_pad($datearr['hour'], 2, "0", STR_PAD_LEFT);
+		$datearr['minute'] = str_pad($datearr['minute'], 2, "0", STR_PAD_LEFT);
+		$datearr['second'] = str_pad($datearr['second'], 2, "0", STR_PAD_LEFT);
+		
+		return 	$datearr;
 	}		
 }
 ?>
