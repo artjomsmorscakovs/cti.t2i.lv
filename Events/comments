@@ -1,0 +1,39 @@
+<!--{
+  "type": "Event",
+  "eventType": "VoicemailCreated",
+  "version": "v1",
+  "data": {
+    "sender": "23332222",
+    "voicemailID": 171118926552,
+    "length": 45,
+    "callStarted": "2017-10-16T21:26:59+0000",
+    "voicemailBoxID": 223,
+    "voicemailBoxName": "User voicemail box",
+    "messageURL": "https://zvanuparvaldnieks.lmt.lv/files/dm0vNzI349857345dfvjdfTYUTDfdHIYEWDUIDY5MDQwMy8yMDE3LzEwNC5tcDM="
+  }
+}
+-->
+
+
+{
+  "type": "Event",
+  "eventType": "VoicemailDeleted",
+  "version": "v1",
+  "data": {
+    "sender": "23332222",
+    "voicemailID": 171118926552
+  }
+}
+
+//CallCompleted; ; 
+    //VoicemailMessageCreatedEvent; VoicemailMessageDeletedEvent
+    //LostCallerCreatedEvent; LostCallerUpdatedEvent; LostCallerDeletedEvent
+
+    OpenSSL PHP Extension installed and configured
+
+    The SuiteCRM instance must be configured use HTTPS/SSL
+
+    You need to have PHP version 5.5.9, or 7.0 and above
+ 
+
+	
