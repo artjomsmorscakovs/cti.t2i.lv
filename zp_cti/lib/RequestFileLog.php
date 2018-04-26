@@ -8,9 +8,9 @@ class RequestFileLog {
 	}
 	
 	function logRequest(Event $request){
-		$this->checkFolderExists($request->folderpath);
+		$this->checkFolderExists($request->getFolderPath());
 		
-		$this->log($this->basepath.$request->filename, print_r($request->__toArray(),TRUE));
+		$this->log($this->getFolderPath().$request->getFileName(), print_r($request->__toArray(),TRUE));
 	}
 	
 	

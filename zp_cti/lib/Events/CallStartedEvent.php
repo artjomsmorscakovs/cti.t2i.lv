@@ -2,6 +2,7 @@
 require_once 'Event.php';
 
 class CallStartedEvent extends Event{
+/*
 	public  $type;
 	public  $eventType;
 	public  $version;
@@ -9,6 +10,7 @@ class CallStartedEvent extends Event{
 	protected  $datetime;
 	protected	$folderpath;
 	protected	$filename;
+*/
 	
 	public function setData($data){
 		$this->data = $data;

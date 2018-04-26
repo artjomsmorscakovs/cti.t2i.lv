@@ -49,6 +49,15 @@ class Event {
 	
     public function __toArray(){
         return call_user_func('get_object_vars', $this);
-    }	
+    }
+	
+	public function getFolderPath(){
+		return $this->folderpath;
+	}	
+
+	public function getFileName(){
+		return $this->filename;
+	}	
+
 }
 ?>
