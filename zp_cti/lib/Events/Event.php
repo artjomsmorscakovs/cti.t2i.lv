@@ -8,7 +8,7 @@ class Event {
 	protected	$folderpath;
 	protected	$filename;
 	
-	private function parseFolderPath($data){
+	public function parseFolderPath($data){
 		//2018-04-25T13:54:19+0000
 		$sep = "_";
 		
