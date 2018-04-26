@@ -28,9 +28,11 @@ $content = trim(file_get_contents("php://input"));
 $decoded = JsonHandler::decode($content);
  
 //If json_decode failed, the JSON is invalid.
+/*
 if(!is_array($decoded)){
     throw new Exception('Received content contained invalid JSON!');
-}
+}*/
+
 
 $string_data = serialize($decoded);
 
