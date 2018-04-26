@@ -27,7 +27,7 @@ class CallStartedEvent{
 	private function parseDateTime($datetime){
 		$result = '' ;
 		if(!empty($datetime)){
-			$datearr = date_parse($data->callStarted);
+			$datearr = date_parse($datetime);
 			$result = $datearr['year'].DIRECTORY_SEPARATOR.$datearr['month'].DIRECTORY_SEPARATOR.$datearr['day'];
 		}else {
 			$result = date('Y/m/d');
