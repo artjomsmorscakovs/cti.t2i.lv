@@ -59,8 +59,8 @@ class SuiteCRMClient{
 		
 		$response = $this->call('oauth/access_token', $parameters);
 		
-		$this->access_token = $response['access_token'];
-		$this->refresh_token = $response['refresh_token'];
+		$this->access_token = $response->access_token;
+		$this->refresh_token = $response->refresh_token;
 		$this->header = array(
 		    'Content-type: application/vnd.api+json',
 		    'Accept: application/vnd.api+json',
