@@ -14,7 +14,7 @@ $postStr = json_encode(array(
     'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
     'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 ));
-$url = 'https://crm1.t2i.lv/api/oauth2';
+$url = 'https://crm1.t2i.lv/lib/API/v8/swagger.json';
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postStr);
