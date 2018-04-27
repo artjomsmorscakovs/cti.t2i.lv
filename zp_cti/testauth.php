@@ -31,5 +31,6 @@ echo 'ok';*/
  require_once './lib/SuiteCRMClient.php';
  
  $client = new SuiteCRMClient();
+ print_r($client);
 
 ?>
