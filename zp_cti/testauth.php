@@ -37,6 +37,7 @@ $data = array(
         "id" => "",
         "type" => "t2ilc_t2i_lmt_calls",
         "attributes" => array(
+            "name" => "testname",
             "caller" => "MrSatoshi",
             "callid" => "12345678",
             "contactid" => "2323rewf4",
