@@ -43,7 +43,7 @@ $data = array(
     ),
 );
 
- $client->addEntry(json_encode($data));
+ $client->addEntry($data);
 
  print_r($client);
 
