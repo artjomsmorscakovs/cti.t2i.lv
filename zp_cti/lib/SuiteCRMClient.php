@@ -19,7 +19,7 @@ class SuiteCRMClient{
 	}
 	
 	public function callMetaList(){
-		$this->call('v8/modules/meta/list', array(), 'GET');
+		$this->call('v8/modules/Accounts', array(), 'GET');
 	}
 	
 	
