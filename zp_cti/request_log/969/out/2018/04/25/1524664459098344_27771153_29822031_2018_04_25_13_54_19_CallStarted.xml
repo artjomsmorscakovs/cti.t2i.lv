@@ -1,0 +1,17 @@
+Array
+(
+    [type] => Event
+    [eventType] => CallStarted
+    [version] => v1
+    [data] => stdClass Object
+        (
+            [status] => 1
+            [direction] => out
+            [destination] => 29822031
+            [callID] => 1524664459098344
+            [caller] => 27771153
+            [contactID] => 969
+            [callStarted] => 2018-04-25T13:54:19+0000
+        )
+
+)
