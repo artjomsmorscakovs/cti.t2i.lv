@@ -69,6 +69,7 @@ class SuiteCRMClient{
 		}else {
 			$this->access_token = $access_token;
 		}
+		
 		$this->header = array(
 		    'Content-type: application/vnd.api+json',
 		    'Accept: application/vnd.api+json',
