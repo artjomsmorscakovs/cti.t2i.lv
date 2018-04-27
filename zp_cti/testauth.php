@@ -34,16 +34,18 @@ echo 'ok';*/
 
 $data = array(
     "id" => "",
-    "type" => "T2I_PHONE_CALLS",
+    "type" => "t2ilc_t2i_lmt_calls",
     "attributes" => array(
         "caller" => "MrSatoshi",
         "callid" => "12345678",
         "contactid" => "2323rewf4",
         "status" => "Failed",
     ),
-);
 
- $client->addEntry($data);
+//[title] => Generate JSON API Response exception detected: SuiteCRM\API\v8\Exception\UnsupportedMediaTypeException: [SuiteCRM] [API] [Unsupported Media Type] Request "Content-Type" should be "application/vnd.api+json", "application/vnd.api+json; boundary=----------------------------830b93ea0fee" given in header. (8000)
+
+
+$client->addEntry(json_encode($data));
 
  print_r($client);
 
