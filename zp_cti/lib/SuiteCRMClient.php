@@ -15,8 +15,12 @@ class SuiteCRMClient{
 	
 	function __construct(){
 		$this->connect();
-		$this->callMetaList();		
+		//$this->callMetaList();
 	}
+
+	public function addEntry($data){
+	    $this->call("v8/modules/T2I_Phone_Calls",$data);
+    }
 	
 	public function callMetaList(){
 		$this->call('v8/modules/Accounts', array(), 'GET');
@@ -52,7 +56,6 @@ class SuiteCRMClient{
 		    'grant_type' => 'password',
 		    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
 		    'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
-		    //FIXME changed admin to zptest
 		    'username' => 'admin',
 		    'password' => 'T2I298220031',
 		    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'

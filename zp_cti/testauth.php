@@ -31,6 +31,22 @@ echo 'ok';*/
  require_once './lib/SuiteCRMClient.php';
  
  $client = new SuiteCRMClient();
+
+$data = array(
+    "id" => "",
+    "type" => "T2I_Phone_Calls",
+    "attributes" => array(
+        "caller" => "MrSatoshi",
+        "callid" => "12345678",
+        "contactid" => "2323rewf4",
+        "status" => "Failed",
+    ),
+);
+
+ $client->addEntry($data);
+
  print_r($client);
+
+
 
 ?>
