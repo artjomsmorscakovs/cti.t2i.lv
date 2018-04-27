@@ -22,5 +22,5 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 $output = curl_exec($ch);
 print_r($output);
-
+echo 'ok';
 ?>
