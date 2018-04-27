@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 $ch = curl_init();
 $header = array(
     'Content-type: application/vnd.api+json',
-    'Accept: application/vnd.api+json',`
+    'Accept: application/vnd.api+json',
  );
 $postStr = json_encode(array(
     'grant_type' => 'client_credentials',
