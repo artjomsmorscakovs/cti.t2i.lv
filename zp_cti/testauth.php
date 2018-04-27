@@ -37,11 +37,11 @@ $data = array(
         "id" => "e3c55321-f398-2381-2cd4-5ae34c07a3fa",
         "type" => "t2ilc_t2i_lmt_calls",
         "attributes" => array(
-            "name" => "testname",
-            "caller" => "MrSatoshi",
-            "callid" => "12345678",
-            "contactid" => "2323rewf4",
-            "status" => "Failed",
+            //"name" => "testname",
+           // "caller" => "MrSatoshi",
+            //"callid" => "12345678",
+            //"contactid" => "2323rewf4",
+            //"status" => "Failed",
         ),
     )
 );
