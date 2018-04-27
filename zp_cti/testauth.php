@@ -46,8 +46,8 @@ $header = array(
  );
 $postStr = json_encode(array(
     'grant_type' => 'password',
-    'client_id' => 'b0eb51cf-bc5d-cd25-c26d-5ae2f6f754e4',
-    'client_secret' => 'client_secret',
+    'client_id' => 'zptestapi',
+    'client_secret' => 'b0eb51cf-bc5d-cd25-c26d-5ae2f6f754e4',
     'username' => 'admin',
     'password' => 'T2I298220031',
     'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
