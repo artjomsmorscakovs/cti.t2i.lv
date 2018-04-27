@@ -52,7 +52,7 @@ $postStr = json_encode(array(
     //'password' => 'T2I298220031',
     'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 ));
-$url = 'http://crm1.t2i.lv/api/oauth/access_token';
+$url = 'https://crm1.t2i.lv/api/oauth/access_token';
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postStr);
