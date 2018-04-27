@@ -14,8 +14,8 @@ $postStr = json_encode(array(
     'client_secret' => 'client_secret',
     'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 ));
-$url = 'https://path-to-instance/api/oauth/access_token';
-curl_setopt($ch, CURLOPT_URL, url);
+$url = 'https://crm1.t2i.lv/api/oauth/access_token';
+curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postStr);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
