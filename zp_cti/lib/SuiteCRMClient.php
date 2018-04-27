@@ -17,7 +17,7 @@ class SuiteCRMClient{
 	}
 
 	public function addEntry($data){
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls",$data);
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$data->id,$data);
     }
 
 	public function callMetaList(){
