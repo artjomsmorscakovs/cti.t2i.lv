@@ -10,8 +10,8 @@ $header = array(
  );
 $postStr = json_encode(array(
     'grant_type' => 'client_credentials',
-    'client_id' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
-    'client_secret' => 'client_secret',
+    'client_id' => 'ZvanuParvaldnieks',
+    'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
     'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 ));
 $url = 'https://crm1.t2i.lv/api/oauth/access_token';
