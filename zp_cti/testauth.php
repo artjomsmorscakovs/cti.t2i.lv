@@ -34,7 +34,7 @@ echo 'ok';*/
 
 $data = array(
     "id" => "",
-    "type" => "T2I_Phone_Calls",
+    "type" => "T2I_PHONE_CALLS",
     "attributes" => array(
         "caller" => "MrSatoshi",
         "callid" => "12345678",
