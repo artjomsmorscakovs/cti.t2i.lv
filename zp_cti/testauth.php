@@ -45,7 +45,7 @@ $header = array(
     'Accept: application/vnd.api+json',
  );
 $postStr = json_encode(array(
-    'grant_type' => 'client_credentials',
+    'grant_type' => 'password',
     'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
     'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
     'username' => 'admin',
