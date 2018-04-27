@@ -48,7 +48,7 @@ $data = array(
 //[title] => Generate JSON API Response exception detected: SuiteCRM\API\v8\Exception\UnsupportedMediaTypeException: [SuiteCRM] [API] [Unsupported Media Type] Request "Content-Type" should be "application/vnd.api+json", "application/vnd.api+json; boundary=----------------------------830b93ea0fee" given in header. (8000)
 
 
-$client->addEntry(json_encode($data));
+$client->addEntry($data);
 
  print_r($client);
 
