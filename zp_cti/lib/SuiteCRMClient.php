@@ -15,7 +15,11 @@ class SuiteCRMClient{
 	
 	function __construct(){
 		$this->connect();
+<<<<<<< HEAD
 		//$this->callMetaList();
+=======
+		$this->callMetaList();
+>>>>>>> e1d4e0e49551e736a8731e04802c28315d895583
 	}
 
 	public function addEntry($data){
@@ -52,6 +56,7 @@ class SuiteCRMClient{
     }
 
 	private function connect(){
+<<<<<<< HEAD
 		$parameters = json_encode(array(
 		    'grant_type' => 'password',
 		    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
@@ -62,9 +67,30 @@ class SuiteCRMClient{
 		));
 		
 		$response = $this->call('oauth/access_token', $parameters);
+=======
+		$token_file_name = $_SERVER[ 'DOCUMENT_ROOT' ].DIRECTORY_SEPARATOR.'zp_cti'.DIRECTORY_SEPARATOR.'access_tokens'.DIRECTORY_SEPARATOR.'access_token.txt';
+		$access_token = file_get_contents($token_file_name);
+		if(empty($access_token)){
+			$parameters = json_encode(array(
+			    'grant_type' => 'password',
+			    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
+			    'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
+			    'username' => 'admin',
+			    'password' => 'T2I298220031',
+			    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
+			));
+			
+			$response = $this->call('oauth/access_token', $parameters);
+			
+			$this->access_token = $response->access_token;
+			$this->refresh_token = $response->refresh_token;
+			
+			file_put_contents($token_file_name, $this->access_token);
+		}else {
+			$this->access_token = $access_token;
+		}
+>>>>>>> e1d4e0e49551e736a8731e04802c28315d895583
 		
-		$this->access_token = $response->access_token;
-		$this->refresh_token = $response->refresh_token;
 		$this->header = array(
 		    'Content-type: application/vnd.api+json',
 		    'Accept: application/vnd.api+json',
