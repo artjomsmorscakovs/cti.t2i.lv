@@ -63,7 +63,7 @@ echo 'ok';*/
     // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
 
     //$client->createEntry($data);
-    $client->retrieveEntry("4b446296-7f65-c83c-f5be-5adde05eebf7");
+    $client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa");
     //$client->updateEntry($update);
 
 
