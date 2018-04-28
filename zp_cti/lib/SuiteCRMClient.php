@@ -19,7 +19,7 @@ class SuiteCRMClient{
 
 	public function createEntry($data){
 	    //POST /api/v8/modules/{module}/{id}
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data), "POST");
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data), "POST"); //json_encode required here
     }
 
     public function retrieveEntry($id){
@@ -29,7 +29,7 @@ class SuiteCRMClient{
 
     public function updateEntry($data){
 	    //PATCH /api/v8/modules/{module}/{id}
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH");
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH"); //json_encode will be executed in call()
     }
 
 
@@ -58,14 +58,15 @@ class SuiteCRMClient{
 		}
 		if($request == 'GET'){
 		    //TODO How to add to existing url, not creating a new?
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
         }
         if($request == 'PATCH'){
+		    //TODO I feel there is something wrong with logic, but it works
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters['data']['id']);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
         }
         if($request == 'DELETE'){
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
         }
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);

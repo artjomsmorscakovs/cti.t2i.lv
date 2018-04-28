@@ -62,7 +62,7 @@ echo 'ok';*/
 );
     // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
 
-    //$client->createEntry($data); - CREATES ENTRY. array as an input 
+    //$client->createEntry($data); - CREATES ENTRY. array as an input
     //$client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa"); - RETRIEVES ENTRY BY ID
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
