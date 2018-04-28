@@ -16,8 +16,16 @@ class SuiteCRMClient{
 		//$this->callMetaList();
 	}
 
-	public function addEntry($data){
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data), "PATCH");
+	public function createEntry($data){
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data), "POST");
+    }
+
+    public function updateEntry($data){
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data),"PATCH");
+    }
+
+    public function readEntry($id){
+	    //
     }
 
 	public function callMetaList(){

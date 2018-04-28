@@ -1,6 +1,6 @@
 <?php 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 
 /*
 $ch = curl_init();
@@ -28,41 +28,40 @@ print_r($output);
 echo 'ok';*/
 
 
- require_once './lib/SuiteCRMClient.php';
- 
- $client = new SuiteCRMClient();
+    require_once './lib/SuiteCRMClient.php';
 
-$data = array(
-    "data" => array(
+    $client = new SuiteCRMClient();
+
+    print_r($client);
+    $data = array(
+        "data" => array(
+            "id" => "",
+            "type" => "t2ilc_t2i_lmt_calls",
+            "attributes" => array(
+                "name" => "qweqwewq",
+               // "caller" => "MrSatoshi",
+                //"callid" => "12345678",
+                //"contactid" => "2323rewf4",
+                //"status" => "Failed",
+            ),
+        )
+    );
+
+    $update = array(
         "id" => "e3c55321-f398-2381-2cd4-5ae34c07a3fa",
         "type" => "t2ilc_t2i_lmt_calls",
         "attributes" => array(
-            "name" => "qweqwewq",
-           // "caller" => "MrSatoshi",
-            //"callid" => "12345678",
-            //"contactid" => "2323rewf4",
-            //"status" => "Failed",
-        ),
-    )
-);
-
-$updata = array(
-        "id" => "e3c55321-f398-2381-2cd4-5ae34c07a3fa",
-        "type" => "t2ilc_t2i_lmt_calls",
-        "attributes" => array(
-            //"name" => "qwerty",
+            "name" => "qwerty",
             //"caller" => "MrSatoshi",
             //"callid" => "12345678",
             //"contactid" => "2323rewf4",
             //"status" => "Failed",
         ),
 );
-//[title] => Generate JSON API Response exception detected: SuiteCRM\API\v8\Exception\UnsupportedMediaTypeException: [SuiteCRM] [API] [Unsupported Media Type] Request "Content-Type" should be "application/vnd.api+json", "application/vnd.api+json; boundary=----------------------------830b93ea0fee" given in header. (8000)
-// record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
+    // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
 
-$client->addEntry($data);
-
- print_r($client);
+    //$client->createEntry($data);
+    $client->updateEntry($update);
 
 
 
