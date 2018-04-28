@@ -29,7 +29,7 @@ class SuiteCRMClient{
 
     public function updateEntry($data){
 	    //PATCH /api/v8/modules/{module}/{id}
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data),"PATCH");
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH");
     }
 
 
@@ -61,7 +61,8 @@ class SuiteCRMClient{
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
         }
         if($request == 'PATCH'){
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.json_decode($parameters)['data']['id']);
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters['data']['id']);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
         }
         if($request == 'DELETE'){
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
