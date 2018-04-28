@@ -57,7 +57,7 @@ class SuiteCRMClient{
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
 		}
 		if($request == 'GET'){
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
         }
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
