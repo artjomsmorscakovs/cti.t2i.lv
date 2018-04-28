@@ -61,7 +61,7 @@ class SuiteCRMClient{
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
         }
         if($request == 'PATCH'){
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters.id);
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters->data->id);
         }
         if($request == 'DELETE'){
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);

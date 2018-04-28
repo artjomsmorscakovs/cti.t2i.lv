@@ -49,10 +49,10 @@ echo 'ok';*/
 
     $update = array(
         "data" => array (
-            "id" => "e3c55321-f398-2381-2cd4-5ae34c07a3fa",
+            "id" => "daf730c6-0731-ac81-e553-5ae429e377c2",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
-                "name" => "qwerty",
+                "name" => "itworks",
                 //"caller" => "MrSatoshi",
                 //"callid" => "12345678",
                 //"contactid" => "2323rewf4",
