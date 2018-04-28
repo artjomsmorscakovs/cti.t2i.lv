@@ -57,7 +57,16 @@ class SuiteCRMClient{
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
 		}
 		if($request == 'GET'){
+		    //TODO How to add to existing url, not creating a new?
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
+        }
+        if($request == 'PATCH'){
+		    //pass
+        }
+        if($request == 'DELETE'){
+            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters);
+
+
         }
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
