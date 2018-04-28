@@ -13,7 +13,7 @@ class SuiteCRMClient{
 	
 	function __construct(){
 		$this->connect();
-		//$this->callMetaList();
+		$this->callMetaList();
 	}
 
 	public function createEntry($data){
