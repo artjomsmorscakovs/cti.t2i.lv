@@ -13,7 +13,8 @@ class SuiteCRMClient{
 	
 	function __construct(){
 		$this->connect();
-		$this->callMetaList();
+		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
+		//$this->callMetaList();
 	}
 
 	public function createEntry($data){
