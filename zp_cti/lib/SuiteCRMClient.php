@@ -17,15 +17,24 @@ class SuiteCRMClient{
 	}
 
 	public function createEntry($data){
+	    //POST /api/v8/modules/{module}/{id}
 	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data), "POST");
     }
 
+    public function retrieveEntry($id){
+        //GET /api/v8/modules/{module}/{id}
+        $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"GET");
+    }
+
     public function updateEntry($data){
+	    //PATCH /api/v8/modules/{module}/{id}
 	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",json_encode($data),"PATCH");
     }
 
-    public function readEntry($id){
-	    //
+
+    public function deleteEntry($id){
+	    //DELETE /api/v8/modules/{module}/{id}
+        $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"DELETE");
     }
 
 	public function callMetaList(){
