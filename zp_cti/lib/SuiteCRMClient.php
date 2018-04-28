@@ -29,7 +29,7 @@ class SuiteCRMClient{
     }
 
 	public function callMetaList(){
-		$this->call('v8/modules/t2ilc_t2i_lmt_calls', array(), 'GET');
+		$this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
 	}
 
 
