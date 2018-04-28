@@ -69,7 +69,7 @@ echo 'ok';*/
 
     $output = $client->retrieveEntry('daf730c6-0731-ac81-e553-5ae429e377c2');
 
-    if ($output) {
+    if (isset($output)) {
         echo "<h1>OUTPUT IS TRUE</h1>";
     } else {
         echo "<h1>OUTPUT IS FALSE</h1>";
