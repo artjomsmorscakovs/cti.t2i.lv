@@ -50,7 +50,9 @@ class SuiteCRMClient{
 
 		$ch = curl_init();
 
+		//FIXME unused variabe $url
 		$url = 'https://crm1.t2i.lv/api/oauth/access_token';
+
 		curl_setopt($ch, CURLOPT_URL, $this->url.$method);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
 		if($request == 'POST'){
@@ -71,6 +73,11 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
+
+		if ($output == false) {
+		    return false;
+        }
+
 
 		$response = json_decode($output);
 
