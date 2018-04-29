@@ -74,6 +74,14 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
 
+        try {
+            $output = curl_exec($ch);
+        } catch (Exception $e) {
+            echo '===================';
+            echo $e;
+            echo '===================';
+        }
+
 
 		$response = json_decode($output);
 
