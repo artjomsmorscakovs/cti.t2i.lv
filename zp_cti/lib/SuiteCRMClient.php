@@ -74,7 +74,8 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
 
-		if ($output == false) {
+		if (!$output) {
+		    echo '<h1>OUTPUT IS FALSE FINALLY</h1>';
 		    return false;
         }
 
