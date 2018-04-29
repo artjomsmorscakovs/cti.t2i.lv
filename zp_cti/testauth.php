@@ -69,7 +69,7 @@ echo 'ok';*/
 
     $output = $client->retrieveEntry('1234daf730c6-0731-ac81-e553-5ae429e377c2');
 
-    if ($output == false) {
+    if (json_decode($output)['errors']) {
         echo "<h1>OUTPUT IS TRUE</h1>";
     } else {
         echo "<h1>OUTPUT IS FALSE</h1>";
