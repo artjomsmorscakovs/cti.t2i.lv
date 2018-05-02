@@ -46,7 +46,7 @@ class SuiteCRMClient{
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
         //print_r($output);
         $temp = $output->data;
-        print_r($temp);
+        print_r($temp[0]->attributes);
     }
 
 
@@ -80,15 +80,6 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
-
-        try {
-            $output = curl_exec($ch);
-        } catch (Exception $e) {
-            echo '===================';
-            echo $e;
-            echo '===================';
-        }
-
 
 		$response = json_decode($output);
 
