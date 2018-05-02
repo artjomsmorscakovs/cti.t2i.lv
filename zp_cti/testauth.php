@@ -56,7 +56,7 @@ echo 'ok';*/
                 "caller" => "MrSatoshi",
                 "callid" => "1234",
                 "contactid" => "2323rewf4",
-                "direction" => "Incoming",
+                "direction" => 1,
                 "status" => "Success",
             ),
         ),
@@ -70,7 +70,7 @@ echo 'ok';*/
 
 
     $id = $client->findByCall_ID($data['data']['attributes']['callid']);
-    $data['data']['id'] = $id->id;
+    $data['data']['id'] = $id->data->id;
     $client->updateEntry($data);
 
 
