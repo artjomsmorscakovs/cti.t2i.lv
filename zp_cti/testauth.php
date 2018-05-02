@@ -70,7 +70,7 @@ echo 'ok';*/
 
 
     $id = $client->findByCall_ID($data['data']['attributes']['callid']);
-    print_r($id[0]->data->id);
+    print_r($id['data'][0]['id']);
     //$data['data']['id'] = $id->data[0]->id;
     //$client->updateEntry($data);
 
