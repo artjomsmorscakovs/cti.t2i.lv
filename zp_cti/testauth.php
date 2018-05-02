@@ -33,7 +33,7 @@ echo 'ok';*/
     $client = new SuiteCRMClient();
 
     print_r($client);
-    $data = array(
+    $data1 = array(
         "data" => array(
             "id" => "",
             "type" => "t2ilc_t2i_lmt_calls",
@@ -47,9 +47,9 @@ echo 'ok';*/
         )
     );
 
-    $update = array(
+    $data = array(
         "data" => array (
-            "id" => "123456780876543",
+            "id" => "",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
                 "name" => "TestQuerry",
@@ -68,13 +68,14 @@ echo 'ok';*/
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
 
-    $id = $client->findByCall_ID($update['data']['attributes']['callid']);
+    $id = $client->findByCall_ID($data['data']['attributes']['callid']);
 
     if ($id) {
-        $update['data']['id'] = $id;
-        $client->updateEntry($update);
+        $data['data']['id'] = $id;
+        $client->updateEntry($data);
     } else {
-        $client->createEntry($update);
+        $data['data']['id'] = '';
+        $client->createEntry($data);
     }
 
 
