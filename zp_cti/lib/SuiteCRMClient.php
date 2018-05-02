@@ -50,12 +50,8 @@ class SuiteCRMClient{
                 echo '<h1>SUCCESS</h1>';
                 echo $call_id.'  =   '.$id;
                 //Do update
-                return true;
             }
         }
-        echo '<h1>FAILED TO FIND</h1>';
-        //Do create
-        return false;
 
 
     }
