@@ -45,16 +45,14 @@ class SuiteCRMClient{
     public function findByCall_ID($id){
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
         foreach ($output->data as $call) {
-            echo $call.'  =   '.$id;
+            echo $call;
             echo '<br>';
-            if ($id == $call_id) {
-                echo '<h1>SUCCESS</h1>';
-                echo $call_id.'  =   '.$id;
-                //Do update
+            //if ($id == $call_id) {
+            //    echo '<h1>SUCCESS</h1>';
+            //   echo $call_id.'  =   '.$id;
+            //    //Do update
             }
         }
-
-
     }
 
    //function to make cURL request
