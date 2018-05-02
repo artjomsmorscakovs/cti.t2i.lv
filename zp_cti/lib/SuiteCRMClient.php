@@ -41,18 +41,8 @@ class SuiteCRMClient{
 		$this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
 	}
 
-    public function findByCall_ID($id){
-        $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', '', 'GET');
-        foreach ($output->data as $call) {
-            $call_id = $call->attributes->callid;
-            if ($id == $call_id) {
-                echo '<h1>UPDATES ENTRY</h1>';
-                print_r($call->id);
-                return $call->id;
-            }
-        }
-        echo '<h1>CREATES ENTRY</h1>';
-        return FALSE;
+    public function findByCall_ID($call_id){
+        $this->call('v8/modules/t2ilc_t2i_lmt_calls?filter[t2ilc_t2i_lmt_calls.callid]=[[eq]]', $call_id, 'GET');
     }
 
    //function to make cURL request
