@@ -19,7 +19,7 @@ class SuiteCRMClient{
 
 	public function createEntry($data){
 	    //POST /api/v8/modules/{module}/{id}
-	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls/", $data); //json_encode required here
+	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls", $data); //json_encode required here
     }
 
     public function retrieveEntry($id){

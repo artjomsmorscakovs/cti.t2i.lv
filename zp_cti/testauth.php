@@ -69,8 +69,8 @@ echo 'ok';*/
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
-    //$client->createEntry($data);
-    $client->updateEntry($data);	
+    $client->createEntry($data);
+    // $client->updateEntry($data);	
 
 /*    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
