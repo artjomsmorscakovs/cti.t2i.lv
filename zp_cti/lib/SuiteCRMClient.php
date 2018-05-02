@@ -47,14 +47,9 @@ class SuiteCRMClient{
         foreach ($output->data as $call) {
             $call_id = $call->attributes->callid;
             if ($id == $call_id) {
-                echo '<h1>SUCCESS</h1>';
-                echo $call_id . '  =   ' . $id;
-                //Do update
                 return TRUE;
             }
         }
-        echo '<h1>FAILED TO FIND</h1>';
-        //Do create entry
         return FALSE;
     }
 

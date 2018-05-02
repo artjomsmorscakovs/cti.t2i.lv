@@ -72,5 +72,11 @@ echo 'ok';*/
     $client->findByCall_ID('1345');
     $client->findByCall_ID('');
 
+    if ($client->findByCall_ID('1234')) {
+        echo 'SUCCESS';
+    } else {
+        echo 'FAIL';
+    }
+
 
 ?>
