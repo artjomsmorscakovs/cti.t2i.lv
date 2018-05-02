@@ -19,26 +19,26 @@ class SuiteCRMClient{
 
 	public function createEntry($data){
 	    //POST /api/v8/modules/{module}/{id}
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/", json_encode($data), "POST"); //json_encode required here
+	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls/", json_encode($data), "POST"); //json_encode required here
     }
 
     public function retrieveEntry($id){
         //GET /api/v8/modules/{module}/{id}
-        $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"GET");
+        return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"GET");
     }
 
     public function updateEntry($data){
 	    //PATCH /api/v8/modules/{module}/{id}
-	    $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH"); //json_encode will be executed in call()
+	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH"); //json_encode will be executed in call()
     }
 
     public function deleteEntry($id){
 	    //DELETE /api/v8/modules/{module}/{id}
-        $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"DELETE");
+        return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"DELETE");
     }
 
 	public function callMetaList(){
-		$this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
+		return $this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
 	}
 
     public function findByCall_ID($call_id){
@@ -55,23 +55,24 @@ class SuiteCRMClient{
 		//FIXME unused variabe $url
 		$url = 'https://crm1.t2i.lv/api/oauth/access_token';
 
-		curl_setopt($ch, CURLOPT_URL, $this->url.$method);
+		
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
 		if($request == 'POST'){
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
-		}
+		}else
 		if($request == 'GET'){
 		    //TODO How to add to existing url, not creating a new?
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }
+        }else
         if($request == 'PATCH'){
 		    //TODO I feel there is something wrong with logic, but it works
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters['data']['id']);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
-        }
+        }else
         if($request == 'DELETE'){
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }
+        }else curl_setopt($ch, CURLOPT_URL, $this->url.$method);
+		
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
