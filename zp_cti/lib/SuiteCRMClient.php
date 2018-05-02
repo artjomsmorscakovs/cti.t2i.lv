@@ -46,10 +46,17 @@ class SuiteCRMClient{
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
 
         foreach ($output->data as $call) {
-            echo '=============try========= <br>';
             print_r($call->attributes->callid);
-            echo '<br>';
+            if ($id == $call->attributes->callid) {
+                echo '<h1>SUCCES</h1>';
+                //Do update
+                return true;
+            }
         }
+        echo '<h1>FAILED TO FIND</h1>';
+        //Do create
+        return false;
+
 
     }
 
