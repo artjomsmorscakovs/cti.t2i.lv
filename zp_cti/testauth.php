@@ -49,14 +49,14 @@ echo 'ok';*/
 
     $update = array(
         "data" => array (
-            "id" => "daf730c6-0731-ac81-e553-5ae429e377c2",
+            "id" => "",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
-                "name" => "itworks",
-                //"caller" => "MrSatoshi",
-                //"callid" => "12345678",
-                //"contactid" => "2323rewf4",
-                //"status" => "Failed",
+                "name" => "TestQuerry",
+                "caller" => "MrSatoshi",
+                "callid" => "12345678",
+                "contactid" => "2323rewf4",
+                "status" => "Success",
             ),
         ),
 );
@@ -73,13 +73,13 @@ echo 'ok';*/
     $client->findByCall_ID('');
 
 
+    $id = $client->findByCall_ID($update['data']['callid']);
 
-
-    if ($client->findByCall_ID('12344535')) {
-        echo 'SUCCESS';
+    if ($id) {
+        $update['data']['id'] = $id;
         $client->updateEntry($update);
     } else {
-        echo 'FAIL';
+        $client->createEntry($update);
     }
 
 
