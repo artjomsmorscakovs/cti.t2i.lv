@@ -8,8 +8,8 @@ class SuiteCRMClient{
 		 );
 	var $access_token;
 	var $refresh_token;
-	var $debugCRMcalls = TRUE;
-	var $debugCRMparams = TRUE;
+	var $debugCRMcalls = FALSE; //FIXME Change back to TRUE
+	var $debugCRMparams = FALSE;//FIXME Change back to TRUE
 	
 	function __construct(){
 		$this->connect();
@@ -59,7 +59,6 @@ class SuiteCRMClient{
 
 
     }
-
 
    //function to make cURL request
     function call($method, $parameters, $request = 'POST')
