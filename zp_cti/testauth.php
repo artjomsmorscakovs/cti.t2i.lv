@@ -54,7 +54,7 @@ echo 'ok';*/
             "attributes" => array(
                 "name" => "FinalTestQuerry",
                 //"caller" => "MrSatoshi",
-                "callid" => "12577899767",
+                //"callid" => "12577899767",
                 //"contactid" => "2323rewf4",
                 //"direction" => 1,
                 //"status" => "Success",
@@ -68,8 +68,9 @@ echo 'ok';*/
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
+    $client->createEntry($data);	
 
-    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
+/*    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
     if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
         $data['data']['id'] = $response->data[0]->id;
@@ -77,5 +78,5 @@ echo 'ok';*/
     } else {
         $client->createEntry($data);
     }
-
+*/
 ?>
