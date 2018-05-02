@@ -50,12 +50,12 @@ echo 'ok';*/
 
     $data = array(
         "data" => array (
-            "id" => "12577899767",
+            "id" => "b1a5e632-f86f-0140-c2c7-5ae9e74b042e",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
                 "name" => "FinalTestQuerry",
                 //"caller" => "MrSatoshi",
-                //"callid" => "12577899767",
+                "callid" => "12577899767",
                 //"contactid" => "2323rewf4",
                 //"direction" => 1,
                 //"status" => "Success",
@@ -70,7 +70,7 @@ echo 'ok';*/
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
     //$client->createEntry($data);
-    $client->createEntry($data);	
+    $client->updateEntry($data);	
 
 /*    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
