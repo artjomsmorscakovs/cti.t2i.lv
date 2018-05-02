@@ -45,8 +45,11 @@ class SuiteCRMClient{
     public function findByCall_ID($id=''){
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
         //print_r($output);
-        $temp = $output->data;
-        print_r($temp[0]->attributes->callid);
+        //$temp = $output->data;
+        foreach ($output->data as $call) {
+            print_r($call->attributes->callid);
+        }
+
     }
 
 
