@@ -49,7 +49,7 @@ class SuiteCRMClient{
     function call($method, $parameters, $request = 'POST')
     {
     	$this->debugCRMParams($method, $parameters);
-
+		
 		$ch = curl_init();
 
 		//FIXME unused variabe $url
@@ -59,7 +59,7 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
 		if($request == 'POST'){
 			curl_setopt($ch, CURLOPT_URL, $this->url.$method);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
 		}else
 		if($request == 'GET'){
 		    //TODO How to add to existing url, not creating a new?
@@ -87,14 +87,14 @@ class SuiteCRMClient{
     }
 
 	private function connect(){
-		$parameters = json_encode(array(
+		$parameters = array(
 		    'grant_type' => 'password',
 		    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
 		    'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
 		    'username' => 'admin',
 		    'password' => 'T2I298220031',
 		    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
-		));
+		);
 
 		$response = $this->call('oauth/access_token', $parameters);
 
