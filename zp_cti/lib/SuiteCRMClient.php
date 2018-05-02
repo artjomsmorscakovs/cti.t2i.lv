@@ -55,24 +55,23 @@ class SuiteCRMClient{
 		//FIXME unused variabe $url
 		$url = 'https://crm1.t2i.lv/api/oauth/access_token';
 
-		
+		curl_setopt($ch, CURLOPT_URL, $this->url.$method);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
 		if($request == 'POST'){
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
-		}else
+		}
 		if($request == 'GET'){
 		    //TODO How to add to existing url, not creating a new?
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }else
+        }
         if($request == 'PATCH'){
 		    //TODO I feel there is something wrong with logic, but it works
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters['data']['id']);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
-        }else
+        }
         if($request == 'DELETE'){
             curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }else curl_setopt($ch, CURLOPT_URL, $this->url.$method);
-		
+        }
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
