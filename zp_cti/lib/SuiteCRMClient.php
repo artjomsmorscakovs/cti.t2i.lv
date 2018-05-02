@@ -42,7 +42,7 @@ class SuiteCRMClient{
 	}
 
     public function findByCall_ID($call_id){
-        $this->call('v8/modules/t2ilc_t2i_lmt_calls?filter[t2ilc_t2i_lmt_calls.callid]=[[eq]]', $call_id, 'GET');
+        return $this->call('v8/modules/t2ilc_t2i_lmt_calls?filter[t2ilc_t2i_lmt_calls.callid]=[[eq]]', $call_id, 'GET');
     }
 
    //function to make cURL request
