@@ -73,7 +73,7 @@ echo 'ok';*/
     $client->findByCall_ID('');
 
 
-    $id = $client->findByCall_ID($update['data']['callid']);
+    $id = $client->findByCall_ID($update['data']['attributes']['callid']);
 
     if ($id) {
         $update['data']['id'] = $id;
