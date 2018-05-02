@@ -43,14 +43,13 @@ class SuiteCRMClient{
 	}
 
     public function findByCall_ID($id){
-        $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
+        $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', '','GET');
         foreach ($output->data as $call) {
-            echo $call;
-            echo '<br>';
-            //if ($id == $call_id) {
-            //    echo '<h1>SUCCESS</h1>';
-            //   echo $call_id.'  =   '.$id;
-            //    //Do update
+            $call_id = $call->attributes->callid;
+            if ($id == $call_id) {
+                echo '<h1>SUCCESS</h1>';
+                echo $call_id.'  =   '.$id;
+                //Do update
             }
         }
     }
