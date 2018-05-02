@@ -46,9 +46,7 @@ class SuiteCRMClient{
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
         $output = json_decode($output, true);
         //print_r($output);
-        $temp = $output['data'][0]['id'];
-        print_r($temp);
-        $temp = $output['data'][1]['id'];
+        $temp = $output['data'][0]['attributes']['callid'];
         print_r($temp);
     }
 
