@@ -69,7 +69,7 @@ echo 'ok';*/
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
 
-    $id = json_encode($client->findByCall_ID($data['data']['attributes']['callid']));
+    $id = array($client->findByCall_ID($data['data']['attributes']['callid']));
     echo $id['data']['id'];
     //$data['data']['id'] = $id->data[0]->id;
     //$client->updateEntry($data);
