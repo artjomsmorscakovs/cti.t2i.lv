@@ -46,8 +46,8 @@ class SuiteCRMClient{
         $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
 
         foreach ($output->data as $call) {
-            if ($id == $call->attributes->callid) {
-                echo '<h1>SUCCES</h1>';
+            if (strcmp($id, $call->attributes->callid)) {
+                echo '<h1>SUCCESS</h1>';
                 //Do update
                 return true;
             }
