@@ -69,6 +69,7 @@ echo 'ok';*/
 
     $client->findByCall_ID('1234');
     $client->findByCall_ID('1333');
+    $client->findByCall_ID('1345');
     $client->findByCall_ID('');
 
 
