@@ -32,7 +32,7 @@ echo 'ok';*/
 
     $client = new SuiteCRMClient();
 
-    print_r($client);
+/*    print_r($client);
     $data1 = array(
         "data" => array(
             "id" => "",
@@ -46,6 +46,7 @@ echo 'ok';*/
             ),
         )
     );
+ * */
 
     $data = array(
         "data" => array (
@@ -69,7 +70,7 @@ echo 'ok';*/
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
     //$client->createEntry($data);
-    $client->updateEntry($data);	
+    $client->createEntry($data);	
 
 /*    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
