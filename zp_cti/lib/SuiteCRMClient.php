@@ -42,6 +42,12 @@ class SuiteCRMClient{
 		$this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
 	}
 
+    public function findByCall_ID($id=''){
+        $output = $this->call('v8/modules/t2ilc_t2i_lmt_calls', $id,'GET');
+        $output = json_decode($output);
+        print_r($output);
+    }
+
 
    //function to make cURL request
     function call($method, $parameters, $request = 'POST')

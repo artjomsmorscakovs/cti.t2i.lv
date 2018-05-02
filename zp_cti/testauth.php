@@ -76,6 +76,7 @@ echo 'ok';*/
     }
     //IF ERROR then it false value;
 
+    $client->findByCall_ID();
 
 
 ?>
