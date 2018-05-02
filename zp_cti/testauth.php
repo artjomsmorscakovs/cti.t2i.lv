@@ -50,10 +50,10 @@ echo 'ok';*/
 
     $data = array(
         "data" => array (
-            //"id" => "b1a5e632-f86f-0140-c2c7-5ae9e74b042e",
+            "id" => "b1a5e632-f86f-0140-c2c7-5ae9e74b042e",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
-                "name" => "FinalTestQuerry",
+                "name" => "FinalTest1",
                 //"caller" => "MrSatoshi",
                 "callid" => "12577899767",
                 //"contactid" => "2323rewf4",
@@ -69,10 +69,10 @@ echo 'ok';*/
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
-    $client->createEntry($data);
+    //$client->createEntry($data);
     // $client->updateEntry($data);	
 
-/*    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
+    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
     if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
         $data['data']['id'] = $response->data[0]->id;
@@ -80,5 +80,5 @@ echo 'ok';*/
     } else {
         $client->createEntry($data);
     }
-*/
+    
 ?>

@@ -17,32 +17,49 @@ class SuiteCRMClient{
 		//$this->callMetaList();
 	}
 
+/**
+ * Important to NOT use "/" Slash in the end, otherwise it won`t create any record 
+ */
 	public function createEntry($data){
 	    //POST /api/v8/modules/{module}/{id}
 	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls", $data); //json_encode required here
     }
 
-    public function retrieveEntry($id){
-        //GET /api/v8/modules/{module}/{id}
-        return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"GET");
+    public function retrieveEntry($data){
+    	//GET /api/v8/modules/{module}/{id}
+		if($this->getDataId($data)){
+			return $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,array(),"GET");
+		}else return FALSE;    	
     }
 
     public function updateEntry($data){
 	    //PATCH /api/v8/modules/{module}/{id}
-	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$data,"PATCH"); //json_encode will be executed in call()
+		if($this->getDataId($data)){
+			return $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,array(),"PATCH");
+		}else return FALSE;    		    
     }
 
     public function deleteEntry($id){
 	    //DELETE /api/v8/modules/{module}/{id}
-        return $this->call("v8/modules/t2ilc_t2i_lmt_calls/",$id,"DELETE");
+		if($this->getDataId($data)){
+			return $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,array(),"DELETE");
+		}else return FALSE;	    
+	    
     }
+	
+	private function getDataId($parameters){
+		if(isset($parameters['data']['id']) && !empty($parameters['data']['id'])){
+			$this->id = $parameters['data']['id'];
+			return TRUE;
+		}else return FALSE;  		
+	}
 
 	public function callMetaList(){
 		return $this->call('v8/modules/t2ilc_t2i_lmt_calls', json_encode(array()), 'GET');
 	}
 
     public function findByCall_ID($call_id){
-        return $this->call('v8/modules/t2ilc_t2i_lmt_calls?filter[t2ilc_t2i_lmt_calls.callid]=[[eq]]', $call_id, 'GET');
+        return $this->call('v8/modules/t2ilc_t2i_lmt_calls?filter[t2ilc_t2i_lmt_calls.callid]=[[eq]]'.$call_id, array(), 'GET');
     }
 
    //function to make cURL request
@@ -50,31 +67,20 @@ class SuiteCRMClient{
     {
     	$this->debugCRMParams($method, $parameters);
 		
+		$url = $this->url.$method;
+		
 		$ch = curl_init();
 
-		//FIXME unused variabe $url
-		$url = 'https://crm1.t2i.lv/api/oauth/access_token';
-
 		
+		$parameters = json_encode($parameters);
+		
+		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
-		if($request == 'POST'){
-			curl_setopt($ch, CURLOPT_URL, $this->url.$method);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
-		}else
-		if($request == 'GET'){
-		    //TODO How to add to existing url, not creating a new?
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }else
-        if($request == 'PATCH'){
-		    //TODO I feel there is something wrong with logic, but it works
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters['data']['id']);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($parameters));
-        }else
-        if($request == 'DELETE'){
-            curl_setopt($ch, CURLOPT_URL, $this->url.$method.$parameters); //Here $parameters is the id itself
-        }else {
-        	curl_setopt($ch, CURLOPT_URL, $this->url.$method);
+		if($request == 'POST' || $request == 'PATCH'){
+			//curl_setopt($ch, CURLOPT_URL, $this->url.$method);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
 		}
+
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
 		$output = curl_exec($ch);
