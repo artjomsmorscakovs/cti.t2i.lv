@@ -59,4 +59,57 @@ echo 'logRequest';
 
  //print_r($filelog);
 //Process the JSON.
+require_once './lib/SuiteCRMClient.php';
+
+$client = new SuiteCRMClient();
+
+print_r($client);
+$data1 = array(
+    "data" => array(
+        "id" => "",
+        "type" => "t2ilc_t2i_lmt_calls",
+        "attributes" => array(
+            "name" => "qweqwewq",
+            // "caller" => "MrSatoshi",
+            //"callid" => "12345678",
+            //"contactid" => "2323rewf4",
+            //"status" => "Failed",
+        ),
+    )
+);
+
+$data = array(
+    "data" => array (
+        "id" => "",
+        "type" => "t2ilc_t2i_lmt_calls",
+        "attributes" => array(
+            "name" => "TestQuerry",
+            "caller" => "MrSatoshi",
+            //"callID" => "12345678",
+            //"contactID" => "2323rewf4",
+            //"status" => "Success",
+        ),
+    ),
+);
+// record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
+
+$client->createEntry($data1); //- CREATES ENTRY. array as an input
+//$client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa"); - RETRIEVES ENTRY BY ID
+//$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
+//$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
+
+
+///$id = $client->findByCall_ID($data['data']['attributes']['callid']);
+
+///if ($id) {
+///    $data['data']['id'] = $id;
+///    $client->updateEntry($data);
+///} else {
+///    $data['data']['id'] = '';
+///    $client->createEntry($data);
+///}
+
+
+
+
 ?>
