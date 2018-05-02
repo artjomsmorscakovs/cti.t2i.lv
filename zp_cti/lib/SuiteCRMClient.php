@@ -8,8 +8,8 @@ class SuiteCRMClient{
 		 );
 	var $access_token;
 	var $refresh_token;
-	var $debugCRMcalls = FALSE; //FIXME Change back to TRUE
-	var $debugCRMparams = FALSE;//FIXME Change back to TRUE
+	var $debugCRMcalls = TRUE; //FIXME Change back to TRUE
+	var $debugCRMparams = TRUE;//FIXME Change back to TRUE
 	
 	function __construct(){
 		$this->connect();
