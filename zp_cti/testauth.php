@@ -72,7 +72,7 @@ echo 'ok';*/
     $response = $client->findByCall_ID($data['data']['attributes']['callid']);
 
     if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
-        $data['data']['id'] = $id->data[0]->id;
+        $data['data']['id'] = $response->data[0]->id;
         $client->updateEntry($data);
     } else {
         $client->createEntry($data);
