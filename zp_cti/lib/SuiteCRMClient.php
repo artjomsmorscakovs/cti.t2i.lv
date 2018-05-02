@@ -48,6 +48,7 @@ class SuiteCRMClient{
             $call_id = $call->attributes->callid;
             if ($id == $call_id) {
                 echo '<h1>UPDATES ENTRY</h1>';
+                print_r($call->id);
                 return $call->id;
             }
         }
