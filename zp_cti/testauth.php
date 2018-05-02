@@ -52,7 +52,7 @@ echo 'ok';*/
             "id" => "",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
-                "name" => "TestQuerry",
+                "name" => "FinalTestQuerry",
                 "caller" => "MrSatoshi",
                 "callid" => "1234",
                 "contactid" => "2323rewf4",
