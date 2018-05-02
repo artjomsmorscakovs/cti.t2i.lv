@@ -54,7 +54,7 @@ echo 'ok';*/
             "attributes" => array(
                 "name" => "TestQuerry",
                 "caller" => "MrSatoshi",
-                "callid" => "12345678",
+                "callid" => "1234",
                 "contactid" => "2323rewf4",
                 "direction" => "Incoming",
                 "status" => "Success",
@@ -63,21 +63,20 @@ echo 'ok';*/
 );
     // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
 
-    $client->createEntry($data); //- CREATES ENTRY. array as an input
+    //$client->createEntry($data); //- CREATES ENTRY. array as an input
     //$client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa"); - RETRIEVES ENTRY BY ID
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
 
-    ///$id = $client->findByCall_ID($data['data']['attributes']['callid']);
-
-    ///if ($id) {
-    ///    $data['data']['id'] = $id;
-    ///    $client->updateEntry($data);
-    ///} else {
-    ///    $data['data']['id'] = '';
-    ///    $client->createEntry($data);
-    ///}
+    $id = $client->findByCall_ID($data['data']['attributes']['callid']);
+    if ($id) {
+        $data['data']['id'] = $id;
+        $client->updateEntry($data);
+    } else {
+        $data['data']['id'] = '';
+        $client->createEntry($data);
+    }
 
 
 ?>
