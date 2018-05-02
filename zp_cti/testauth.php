@@ -54,7 +54,7 @@ echo 'ok';*/
             "attributes" => array(
                 "name" => "TestQuerry",
                 "caller" => "MrSatoshi",
-                "callID" => "12345678",
+                //"callID" => "12345678",
                 //"contactID" => "2323rewf4",
                 //"status" => "Success",
             ),
