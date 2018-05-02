@@ -54,15 +54,15 @@ echo 'ok';*/
             "attributes" => array(
                 "name" => "TestQuerry",
                 "caller" => "MrSatoshi",
-                //"callID" => "12345678",
-                //"contactID" => "2323rewf4",
-                //"status" => "Success",
+                "callid" => "12345678",
+                "contactid" => "2323rewf4",
+                "status" => "Success",
             ),
         ),
 );
     // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
 
-    $client->createEntry($data1); //- CREATES ENTRY. array as an input
+    $client->createEntry($data); //- CREATES ENTRY. array as an input
     //$client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa"); - RETRIEVES ENTRY BY ID
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
