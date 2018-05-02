@@ -56,7 +56,7 @@ echo 'ok';*/
                 "caller" => "MrSatoshi",
                 "callid" => "12577899767",
                 "contactid" => "2323rewf4",
-                "direction" => 1,
+                //"direction" => 1,
                 "status" => "Success",
             ),
         ),
