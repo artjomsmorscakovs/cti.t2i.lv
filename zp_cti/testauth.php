@@ -49,13 +49,13 @@ echo 'ok';*/
 
     $update = array(
         "data" => array (
-            "id" => "",
+            "id" => "123456780876543",
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
                 "name" => "TestQuerry",
                 "caller" => "MrSatoshi",
-                "callID" => "12345678",
-                "contactID" => "2323rewf4",
+                "callid" => "12345678",
+                "contactid" => "2323rewf4",
                 "status" => "Success",
             ),
         ),
@@ -67,13 +67,8 @@ echo 'ok';*/
     //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
     //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
 
-    $client->findByCall_ID('1234');
-    $client->findByCall_ID('1333');
-    $client->findByCall_ID('1345');
-    $client->findByCall_ID('');
 
-
-    $id = $client->findByCall_ID($update['data']['attributes']['callID']);
+    $id = $client->findByCall_ID($update['data']['attributes']['callid']);
 
     if ($id) {
         $update['data']['id'] = $id;
