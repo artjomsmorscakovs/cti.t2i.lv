@@ -48,6 +48,7 @@ class SuiteCRMClient{
             $call_id = $call->attributes->callid;
             if (strcmp($id,$call_id)) {
                 echo '<h1>SUCCESS</h1>';
+                echo $call_id.'  =   '.$id;
                 //Do update
                 return true;
             }
