@@ -47,7 +47,7 @@ class SuiteCRMClient{
         foreach ($output->data as $call) {
             $call_id = $call->attributes->callid;
             if ($id == $call_id) {
-                return TRUE;
+                return $call->id;
             }
         }
         return FALSE;
