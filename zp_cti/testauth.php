@@ -53,11 +53,11 @@ echo 'ok';*/
             "type" => "t2ilc_t2i_lmt_calls",
             "attributes" => array(
                 "name" => "FinalTestQuerry",
-                "caller" => "MrSatoshi",
+                //"caller" => "MrSatoshi",
                 "callid" => "12577899767",
-                "contactid" => "2323rewf4",
+                //"contactid" => "2323rewf4",
                 //"direction" => 1,
-                "status" => "Success",
+                //"status" => "Success",
             ),
         ),
 );
