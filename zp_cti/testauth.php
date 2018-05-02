@@ -76,7 +76,6 @@ echo 'ok';*/
         $client->updateEntry($data);
     } else {
         $client->createEntry($data);
-        return false;
     }
 
 ?>
