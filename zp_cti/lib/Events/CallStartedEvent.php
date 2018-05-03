@@ -14,6 +14,7 @@ class CallStartedEvent extends Event{
 
     public function setData($data){
         $this->data = $data->data;
+        echo 'HELLO';
         $this->parseFolderPath($data);
 
         /*
