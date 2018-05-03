@@ -11,7 +11,6 @@ class CallConnectedEvent extends Event{
     protected   $folderpath;
     protected   $filename;
 */
-    
 }
 
 

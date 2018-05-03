@@ -51,7 +51,6 @@ $requestObject = $mapper->map($decoded, new $classname());
 print_r($requestObject);
 echo 'requestObject1';
 
-
 $logger = new RequestFileLog();
 $logger->logRequest($requestObject);
 echo 'logRequest';
@@ -66,28 +65,15 @@ echo 'logRequest';
 
 $client = new SuiteCRMClient();
 
-$data = array(
-    "data" => array (
-        "id" => "",
-        "type" => "t2ilc_t2i_lmt_calls",
-        "attributes" => array(
-            "name" => "FinalTest1",
-            //"caller" => "MrSatoshi",
-            "callid" => "12577899767",
-            //"contactid" => "2323rewf4",
-            //"direction" => 1,
-            //"status" => "Success",
-        ),
-    ),
-);
+//$requestObject; - map (json_decode($output))
 
-$response = $client->findByCall_ID($data['data']['attributes']['callid']);
+$response = $client->findByCall_ID($requestObject->data->attributes->callid);
 
-if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
+if (isset($response->data->id) && !empty($response->data->id)) {
     $data['data']['id'] = $response->data[0]->id;
-    $client->updateEntry($data);
+    $client->updateEntry($requestObject);
 } else {
-    $client->createEntry($data);
+    $client->createEntry($requestObject);
 }
 
 

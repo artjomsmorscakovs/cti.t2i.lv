@@ -10,7 +10,6 @@ class VoiceMailMessageDeletedEvent extends Event
         protected  $datetime;
         protected   $folderpath;
         protected   $filename;
-     *
         "sender": "23332222",
         "voicemailID": 171118926552
     */
