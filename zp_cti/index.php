@@ -76,7 +76,7 @@ $client = new SuiteCRMClient();
 
 //$requestObject; - map (json_decode($output))
 
-$response = $client->findByCall_ID($requestObject->data->attributes->callid);
+$response = $client->findByCall_ID($requestObject->data[0]->attributes->callid);
 
 if (isset($response->data->id) && !empty($response->data->id)) {
     $requestObject->data->id = $response->data[0]->id;
