@@ -14,7 +14,7 @@ require_once './lib/JsonMapper.php';
 require_once './lib/SuiteCRMClient.php';
 
 //Specific Event Classes
-require_once 'Event.php';
+require_once './lib/Events/Event.php';
 
  //error_reporting(E_ALL);
  //ini_set('display_errors', 1);
