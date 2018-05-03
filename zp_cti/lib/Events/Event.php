@@ -8,10 +8,7 @@ class Event {
 	protected  $datetime;
 	protected	$folderpath;
 	protected	$filename;
-
-    /**
-     * @param data $data
-     */
+	
 	public function setData($data){
 		$this->data = $data;
 		$this->parseFolderPath($data);
