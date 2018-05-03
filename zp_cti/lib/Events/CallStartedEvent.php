@@ -12,10 +12,7 @@ class CallStartedEvent extends Event{
     public $contactid;
     */
 
-    public function setData($data){
-        echo 'HELLO';
-        $this->data = $data->data;
-        $this->parseFolderPath($data);
+    //public function setData($data){
 
         /*
         $this-> $callid = $data->data->attributes->callID;
@@ -26,7 +23,7 @@ class CallStartedEvent extends Event{
         $this-> $callstarted = $data->data->attributes->callStarted;
         $this-> $contactid = $data->data->attributes->contactID;
         */
-    }
+   // }
 
     /*
         public  $type;
