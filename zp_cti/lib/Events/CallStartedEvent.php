@@ -51,6 +51,7 @@ class CallStartedEvent extends Event{
         }
     */
     public function toArray(){
+        echo 'HELLO FROM TOARRAY!';
 
         $callid = $this->$data->data->callid;
         $caller = $this->$data->data->caller;
