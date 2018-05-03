@@ -26,6 +26,7 @@
 	$client = new SuiteCRMClient();
 	echo 'ENTER';
 	$arrtocrm = $requestObject->toArray();
+	echo 'MIDDLE';
 	$client->createEntry($arrtocrm);
 	echo 'EXIT';
 
