@@ -13,7 +13,7 @@
 
     $mapper = new JsonMapper();
     echo '<h1>ENTER</h1>';
-    $requestObject = $mapper->map($decoded, CallStartedEvent());
+    $requestObject = $mapper->map($decoded, new CallStartedEvent());
     echo '<h1>EXIT</h1>';
 
 	echo "<br /><br /><br /><br /><br /><br /><br />";
