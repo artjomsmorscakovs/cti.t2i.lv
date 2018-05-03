@@ -1,5 +1,4 @@
 <?php
-require_once 'Event.php';
 
 class CallCompletedEvent extends Event{
 

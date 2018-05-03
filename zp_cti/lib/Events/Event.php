@@ -1,4 +1,13 @@
 <?php
+require_once 'CallStartedEvent.php';
+require_once 'CallCompletedEvent.php';
+require_once 'CallConnectedEvent.php';
+require_once 'VoiceMailCreatedEvent.php';
+require_once 'VoiceMailMessageDeletedEvent.php';
+require_once 'LostCallerAdded.php';
+require_once 'LostCallerUpdated.php';
+require_once 'LostCallerRemoved.php';
+
 class Event {
 	public  $type;
 	public  $eventType;
