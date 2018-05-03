@@ -2,16 +2,9 @@
 
 class VoiceMailMessageDeletedEvent extends Event
 {
-    public $sender_c;
-    public $voicemailid_c;
+    // $sender_c;
+    // $voicemailid_c;
 
-    public function setData($data){
-        $this->data = $data;
-        $this->parseFolderPath($data);
-
-        $this-> $sender_c = $data->data->attributes->sender;
-        $this-> $voicemailid_c = $data->data->attributes->voicemailID;
-    }
     /*
         public  $type;
         public  $eventType;

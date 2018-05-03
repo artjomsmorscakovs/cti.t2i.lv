@@ -2,26 +2,16 @@
 
 class VoiceMailCreatedEvent extends Event
 {
-    public $sender_c;
-    public $voicemailid_c;
-    public $length_c;
-    public $callstarted;
-    public $voicemailboxid_c;
-    public $voicemailboxname_c;
-    public $messageurl_c;
+    /*
+     $sender_c;
+     $voicemailid_c;
+     $length_c;
+     $callstarted;
+     $voicemailboxid_c;
+     $voicemailboxname_c;
+     $messageurl_c;
+    */
 
-    public function setData($data){
-
-        $this->data = $data;
-        $this->parseFolderPath($data);
-
-        $this-> $sender_c = $data->data->attributes->sender;
-        $this-> $voicemailid_c = $data->data->attributes->voicemailID;
-        $this-> $length_c = $data->data->attributes->length;
-        $this-> $callstarted = $data->data->attributes->callStarted;
-        $this-> $voicemailboxid_c = $data->data->attributes->voicemailBoxID;
-        $this-> $voicemailboxname_c = $data->data->attributes->voicemailBoxName;
-        $this-> $messageurl_c = $data->data->attributes->messageURL;
         /*
         {
             "type": "Event",
@@ -38,10 +28,6 @@ class VoiceMailCreatedEvent extends Event
           }
         } */
 
-
-
-
-    }
     /*
         public  $type;
         public  $eventType;

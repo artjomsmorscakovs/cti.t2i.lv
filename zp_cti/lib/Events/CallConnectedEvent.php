@@ -1,14 +1,7 @@
 <?php
 
 class CallConnectedEvent extends Event{
-    public $callid;
-    public $caller;
-    public $destination;
-    public $direction;
-    public $status;
-    public $callstarted;
-    public $callconnected_c;
-    public $contactid;
+
 /*
     public  $type;
     public  $eventType;
@@ -36,18 +29,38 @@ class CallConnectedEvent extends Event{
 
 */
 
-    public function setData($data){
-        $this->data = $data;
-        $this->parseFolderPath($data);
 
-        $this-> $callid = $data->data->attributes->callID;
-        $this-> $caller = $data->data->attributes->caller;
-        $this-> $destination = $data->data->attributes->destination;
-        $this-> $direction = $data->data->attributes->direction;;
-        $this-> $status = $data->data->attributes->status;
-        $this-> $callstarted = $data->data->attributes->callStarted;
-        $this-> $callconnected_c = $data->data->attributes->callConnected;
-        $this-> $contactid = $data->data->attributes->contactID;
+    public function toArray(){
+
+        $callid = $this->data->callid;
+        $caller = $this->data->caller;
+        $destination = $this->data->destination;
+        $direction = $this->data->direction;
+        $status = $this->data->status;
+        $callstarted = $this->data->callstarted;
+        $callconnected_c = $this->data->callconnected;
+        $contactid = $this->data->contactid;
+
+
+        $arr = array(
+            'data' => array(
+                'id'=>'',
+                'type'=>'t2ilc_t2i_lmt_calls',
+                'attributes' => array(
+                    'name'=> $caller,
+                    'callid' => $callid,
+                    'caller' => $caller,
+                    'destination' => $destination,
+                    'direction' => $direction,
+                    'status' => $status,
+                    'callstarted' => $callstarted,
+                    'callconnected_c' => $callconnected_c,
+                    'contactid' => $contactid
+                )
+            )
+        );
+
+        return $arr;
     }
 }
 

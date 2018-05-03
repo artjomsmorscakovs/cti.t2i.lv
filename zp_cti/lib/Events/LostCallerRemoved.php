@@ -2,16 +2,10 @@
 
 class LostCallerRemoved extends Event{
 
-    public $destination;
-    public $callerid_c;
+    // $destination;
+    // $callerid_c;
 
-    public function setData($data){
-        $this->data = $data;
-        $this->parseFolderPath($data);
 
-        $this-> $destination = $data->data->attributes->destination;
-        $this-> $callerid_c  = $data->data->attributes->callerid;
-    }
     /*
         public  $type;
         public  $eventType;
