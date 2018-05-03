@@ -8,8 +8,8 @@ class SuiteCRMClient{
 		 );
 	var $access_token;
 	var $refresh_token;
-	var $debugCRMcalls = TRUE; //FIXME Change back to TRUE
-	var $debugCRMparams = TRUE;//FIXME Change back to TRUE
+	var $debugCRMcalls = TRUE;
+	var $debugCRMparams = TRUE;
 	
 	function __construct(){
 		$this->connect();
@@ -39,7 +39,7 @@ class SuiteCRMClient{
 		}else return FALSE;    		    
     }
 
-    public function deleteEntry($id){
+    public function deleteEntry($data){
 	    //DELETE /api/v8/modules/{module}/{id}
 		if($this->getDataId($data)){
 			return $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,array(),"DELETE");

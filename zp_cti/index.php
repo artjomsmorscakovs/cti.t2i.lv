@@ -5,11 +5,15 @@
  * 
  */
  
- require_once("./lib/jsonhandler.php");
- require_once './lib/RequestFileLog.php';
- require_once './lib/JsonMapper.php';
-  // require_once './lib/Events/Event.php';
- require_once './lib/Events/CallStartedEvent.php';
+require_once("./lib/jsonhandler.php");
+require_once './lib/RequestFileLog.php';
+require_once './lib/JsonMapper.php';
+// require_once './lib/Events/Event.php';
+require_once './lib/Events/CallStartedEvent.php';
+require_once './lib/SuiteCRMClient.php';
+
+ //error_reporting(E_ALL);
+ //ini_set('display_errors', 1);
  
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
@@ -59,6 +63,32 @@ echo 'logRequest';
 
  //print_r($filelog);
 //Process the JSON.
+
+$client = new SuiteCRMClient();
+
+$data = array(
+    "data" => array (
+        "id" => "",
+        "type" => "t2ilc_t2i_lmt_calls",
+        "attributes" => array(
+            "name" => "FinalTest1",
+            //"caller" => "MrSatoshi",
+            "callid" => "12577899767",
+            //"contactid" => "2323rewf4",
+            //"direction" => 1,
+            //"status" => "Success",
+        ),
+    ),
+);
+
+$response = $client->findByCall_ID($data['data']['attributes']['callid']);
+
+if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
+    $data['data']['id'] = $response->data[0]->id;
+    $client->updateEntry($data);
+} else {
+    $client->createEntry($data);
+}
 
 
 
