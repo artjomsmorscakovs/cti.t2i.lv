@@ -3,11 +3,15 @@ class Event {
 	public  $type;
 	public  $eventType;
 	public  $version;
+
 	public  $data;
 	protected  $datetime;
 	protected	$folderpath;
 	protected	$filename;
-	
+
+    /**
+     * @param data $data
+     */
 	public function setData($data){
 		$this->data = $data;
 		$this->parseFolderPath($data);

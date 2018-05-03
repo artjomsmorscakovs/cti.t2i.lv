@@ -11,7 +11,7 @@ class CallStartedEvent extends Event{
     public $callstarted;
     public $contactid;
     */
-    
+
     public function setData($data){
         $this->data = $data;
         $this->parseFolderPath($data);
