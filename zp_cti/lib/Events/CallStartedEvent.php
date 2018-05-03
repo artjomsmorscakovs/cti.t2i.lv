@@ -55,13 +55,13 @@ class CallStartedEvent extends Event{
     public function toArray(){
         echo 'HELLO FROM TOARRAY!';
 
-        $callid = $this->$data->data->callid;
-        $caller = $this->$data->data->caller;
-        $destination = $this->$data->data->destination;
-        $direction = $this->$data->data->direction;
-        $status = $this->$data->data->status;
-        $callstarted = $this->$data->data->callstarted;
-        $contactid = $this->$data->data->contactid;
+        $callid = $this->$data->callid;
+        $caller = $this->$data->caller;
+        $destination = $this->$data->destination;
+        $direction = $this->$data->direction;
+        $status = $this->$data->status;
+        $callstarted = $this->$data->callstarted;
+        $contactid = $this->$data->contactid;
 
         echo 'HELLO FROM TOARRAY! AFTER DECLARATIONS';
 
