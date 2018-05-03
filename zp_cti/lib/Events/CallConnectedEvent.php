@@ -2,6 +2,14 @@
 require_once 'Event.php';
 
 class CallConnectedEvent extends Event{
+    public $callid;
+    public $caller;
+    public $destination;
+    public $direction;
+    public $status;
+    public $callstarted;
+    public $callconnected_c;
+    public $contactid;
 /*
     public  $type;
     public  $eventType;
@@ -28,6 +36,20 @@ class CallConnectedEvent extends Event{
     }
 
 */
+
+    public function setData($data){
+        $this->data = $data;
+        $this->parseFolderPath($data);
+
+        $this-> $callid = $data->data->attributes->callID;
+        $this-> $caller = $data->data->attributes->caller;
+        $this-> $destination = $data->data->attributes->destination;
+        $this-> $direction = $data->data->attributes->direction;;
+        $this-> $status = $data->data->attributes->status;
+        $this-> $callstarted = $data->data->attributes->callStarted;
+        $this-> $callconnected_c = $data->data->attributes->callConnected;
+        $this-> $contactid = $data->data->attributes->contactID;
+    }
 }
 
 

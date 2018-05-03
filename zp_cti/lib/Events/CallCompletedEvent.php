@@ -2,6 +2,30 @@
 require_once 'Event.php';
 
 class CallCompletedEvent extends Event{
+
+    public $callid;
+    public $caller;
+    public $destination;
+    public $direction;
+    public $status;
+    public $callstarted;
+    public $callconnected_c;
+    public $connectiontime_c;
+    public $contactid;
+    public $previous_contactid_c;
+
+    public function setData($data){
+        $this->data = $data;
+        $this->parseFolderPath($data);
+
+        $this-> $callid = $data->data->attributes->callID;
+        $this-> $caller = $data->data->attributes->caller;
+        $this-> $destination = $data->data->attributes->destination;
+        $this-> $direction = $data->data->attributes->direction;;
+        $this-> $status = $data->data->attributes->status;
+        $this-> $callstarted = $data->data->attributes->callStarted;
+        $this-> $contactid = $data->data->attributes->contactID;
+    }
 /*
     public  $type;
     public  $eventType;
