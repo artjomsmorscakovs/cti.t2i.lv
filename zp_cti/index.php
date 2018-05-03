@@ -17,7 +17,7 @@ require_once './lib/SuiteCRMClient.php';
 require_once './lib/Events/CallStartedEvent.php';
 require_once './lib/Events/CallCompletedEvent.php';
 require_once './lib/Events/CallConnectedEvent.php';
-require_once './lib/Events/VoicemailCreatedEvent.php';
+require_once './lib/Events/VoiceMailCreatedEvent.php';
 require_once './lib/Events/VoiceMailMessageDeletedEvent.php';
 require_once './lib/Events/LostCallerAdded.php';
 require_once './lib/Events/LostCallerUpdated.php';

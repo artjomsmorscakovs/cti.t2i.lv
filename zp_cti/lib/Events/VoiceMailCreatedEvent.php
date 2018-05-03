@@ -1,7 +1,7 @@
 <?php
 require_once 'Event.php';
 
-class VoicemailCreatedEvent extends Event
+class VoiceMailCreatedEvent extends Event
 {
     /*
         public  $type;
