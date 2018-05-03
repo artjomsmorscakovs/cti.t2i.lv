@@ -13,7 +13,7 @@ class Event {
      * @param data $data
      */
 	public function setData($data){
-		$this->data = $data->data;
+		$this->data = $data;
 		$this->parseFolderPath($data);
 		
 	}	
