@@ -70,7 +70,7 @@ $client = new SuiteCRMClient();
 $response = $client->findByCall_ID($requestObject->data->attributes->callid);
 
 if (isset($response->data->id) && !empty($response->data->id)) {
-    $data['data']['id'] = $response->data[0]->id;
+    $requestObject->data->id = $response->data[0]->id;
     $client->updateEntry($requestObject);
 } else {
     $client->createEntry($requestObject);
