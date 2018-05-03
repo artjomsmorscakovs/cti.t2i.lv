@@ -50,6 +50,32 @@ class CallStartedEvent extends Event{
           }
         }
     */
+    public function toArray(){
+
+        $callid = $this->$data->data->callid;
+        $caller = $this->$data->data->caller;
+        $destination = $this->$data->data->destination;
+        $direction = $this->$data->data->direction;
+        $status = $this->$data->data->status;
+        $callstarted = $this->$data->data->callstarted;
+        $contactid = $this->$data->data->contactid;
+
+
+        $arr = array(
+            'data' => array(
+                'name'=> $this->name.' from '.$caller,
+                'callid' => $callid,
+                'caller' => $caller,
+                'destination' => $destination,
+                'direction' => $direction,
+                'status' => $status,
+                'callstarted' => $callstarted,
+                'contactid' => $contactid
+            )
+        );
+
+        return $arr;
+    }
 }
 
 

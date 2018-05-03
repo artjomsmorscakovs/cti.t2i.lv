@@ -16,19 +16,15 @@
     print_r($decoded);
 
     $mapper = new JsonMapper();
-    //echo $decoded->eventType;
-    echo '<h1>ENTER</h1>';
     $requestObject = $mapper->map(json_decode($decoded), new CallStartedEvent());
-    echo '<h1>EXIT</h1>';
 
-    print_r($requestObject->__toArray());
 
 	echo "<br /><br /><br /><br /><br /><br /><br />";
 	
 	//print_r(json_encode($arr));
 
 	$client = new SuiteCRMClient();
-	$client->createEntry($requestObject->__toArray());
+	$client->createEntry($requestObject->toArray());
 
 
 ?>
