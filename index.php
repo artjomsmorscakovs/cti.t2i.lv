@@ -17,7 +17,7 @@
 	//print_r(json_encode($arr));
 
 	$client = new SuiteCRMClient();
-	//$client->createEntry($decoded);
+	$client->createEntry($requestObject);
 
 
 ?>
