@@ -2,8 +2,7 @@
 require_once 'Event.php';
 
 class CallStartedEvent extends Event{
-
-    //callstarted
+    
     public $callid;
     public $caller;
     public $destination;
@@ -11,15 +10,6 @@ class CallStartedEvent extends Event{
     public $status;
     public $callstarted;
     public $contactid;
-    //callstarted = $data->data->attributes->callStarted
-    //callconnected
-    //callcompleted
-    //voicemailcreated
-    //voicemaildeleted
-    //lostcalleradded
-    //lostcallerupdated
-    //lostcallremoved
-
 
     public function setData($data){
         $this->data = $data;
