@@ -78,7 +78,7 @@ class SuiteCRMClient{
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
 		if($request == 'POST' || $request == 'PATCH'){
 			//curl_setopt($ch, CURLOPT_URL, $this->url.$method);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters->data); //FIXME data
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
 		}
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
