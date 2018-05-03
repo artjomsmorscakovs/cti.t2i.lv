@@ -1,4 +1,4 @@
-<?
+<?php
 
 	require_once "./zp_cti/lib/SuiteCRMClient.php";
 
@@ -8,7 +8,7 @@
 
 	echo "<br /><br /><br /><br /><br /><br /><br />";
 	
-	print_r(json_encode($arr));
+	//print_r(json_encode($arr));
 
 	$client = new SuiteCRMClient();
 	$client->createEntry($arr);
