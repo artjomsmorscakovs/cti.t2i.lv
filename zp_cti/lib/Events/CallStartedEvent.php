@@ -12,43 +12,14 @@ class CallStartedEvent extends Event{
     public $callstarted;
     public $contactid;
     //callstarted = $data->data->attributes->callStarted
-
     //callconnected
-
-
     //callcompleted
-
-
     //voicemailcreated
-    public $sender_c;
-    public $voicemailid_c;
-    public $length_c;
-    public $callstarted;
-    public $voicemailboxid_c;
-    public $voicemailboxname_c;
-    public $messageurl_c;
-
     //voicemaildeleted
-    public $sender_c;
-    public $voicemailid_c;
-
     //lostcalleradded
-    public $contact_name_c;
-    public $destination;
-    public $attempts_c;
-    public $callerid_c;
-    public $last_contact_c;
-
     //lostcallerupdated
-    public $contact_name_c;
-    public $destination;
-    public $attempts_c;
-    public $callerid_c;
-    public $last_contact_c;
-
     //lostcallremoved
-    public $destination;
-    public $callerid_c;
+
 
     public function setData($data){
         $this->data = $data;

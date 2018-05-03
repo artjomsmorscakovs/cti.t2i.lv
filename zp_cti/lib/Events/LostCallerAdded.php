@@ -2,7 +2,25 @@
 require_once 'Event.php';
 
 class LostCallerAdded extends Event{
+
+    public $contact_name_c;
+    public $destination;
+    public $attempts_c;
+    public $callerid_c;
+    public $last_contact_c;
+
+    public function setData($data){
+        $this->data = $data;
+        $this->parseFolderPath($data);
+
+        $this-> $contact_name_c = $data->data->attributes->contact_name;
+        $this-> $destination = $data->data->attributes->destination;
+        $this-> $attempts_c  = $data->data->attributes->attempts;
+        $this-> $callerid_c  = $data->data->attributes->callerid;
+        $this-> $last_contact_c = $data->data->attributes->last_contact;
+    }
     /*
+     *
         public  $type;
         public  $eventType;
         public  $version;

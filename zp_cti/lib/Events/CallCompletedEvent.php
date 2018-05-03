@@ -24,7 +24,9 @@ class CallCompletedEvent extends Event{
         $this-> $direction = $data->data->attributes->direction;;
         $this-> $status = $data->data->attributes->status;
         $this-> $callstarted = $data->data->attributes->callStarted;
+        $this-> $callconnected_c =$data->data->attributes->callConnected;
         $this-> $contactid = $data->data->attributes->contactID;
+        $this-> $previous_contactid_c = $data->data->attributes->contactID;
     }
 /*
     public  $type;
