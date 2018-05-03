@@ -63,14 +63,18 @@ class CallStartedEvent extends Event{
 
         $arr = array(
             'data' => array(
-                'name'=> $this->name.' from '.$caller,
-                'callid' => $callid,
-                'caller' => $caller,
-                'destination' => $destination,
-                'direction' => $direction,
-                'status' => $status,
-                'callstarted' => $callstarted,
-                'contactid' => $contactid
+                'id'=>'',
+                'type'=>'t2ilc_t2i_lmt_calls',
+                'attributes' => array(
+                    'name'=> $this->name.' from '.$caller,
+                    'callid' => $callid,
+                    'caller' => $caller,
+                    'destination' => $destination,
+                    'direction' => $direction,
+                    'status' => $status,
+                    'callstarted' => $callstarted,
+                    'contactid' => $contactid
+                )
             )
         );
 
