@@ -21,6 +21,8 @@
     $requestObject = $mapper->map(json_decode($decoded), new CallStartedEvent());
     echo '<h1>EXIT</h1>';
 
+    print_r($requestObject);
+
 	echo "<br /><br /><br /><br /><br /><br /><br />";
 	
 	//print_r(json_encode($arr));
