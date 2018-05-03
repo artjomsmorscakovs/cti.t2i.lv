@@ -24,7 +24,9 @@
 	//print_r(json_encode($arr));
 
 	$client = new SuiteCRMClient();
+	echo 'ENTER';
 	$client->createEntry($requestObject->toArray());
+	echo 'EXIT';
 
 
 ?>
