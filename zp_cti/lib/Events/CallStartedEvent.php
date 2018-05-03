@@ -61,6 +61,8 @@ class CallStartedEvent extends Event{
         $callstarted = $this->$data->data->callstarted;
         $contactid = $this->$data->data->contactid;
 
+        echo 'HELLO FROM TOARRAY! AFTER DECLARATIONS';
+
 
         $arr = array(
             'data' => array(
