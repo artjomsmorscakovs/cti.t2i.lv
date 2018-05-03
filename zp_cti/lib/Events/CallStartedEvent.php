@@ -66,7 +66,7 @@ class CallStartedEvent extends Event{
                 'id'=>'',
                 'type'=>'t2ilc_t2i_lmt_calls',
                 'attributes' => array(
-                    'name'=> $this->name.' from '.$caller,
+                    'name'=> $caller,
                     'callid' => $callid,
                     'caller' => $caller,
                     'destination' => $destination,
