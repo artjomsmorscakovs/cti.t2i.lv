@@ -2,7 +2,7 @@
 require_once 'Event.php';
 
 class CallStartedEvent extends Event{
-
+    /*
     public $callid;
     public $caller;
     public $destination;
@@ -10,9 +10,10 @@ class CallStartedEvent extends Event{
     public $status;
     public $callstarted;
     public $contactid;
+    */
 
     public function __construct(){
-        
+
     }
 
 
@@ -20,6 +21,7 @@ class CallStartedEvent extends Event{
         $this->data = $data;
         $this->parseFolderPath($data);
 
+        /*
         $this-> $callid = $data->data->attributes->callID;
         $this-> $caller = $data->data->attributes->caller;
         $this-> $destination = $data->data->attributes->destination;
@@ -27,6 +29,7 @@ class CallStartedEvent extends Event{
         $this-> $status = $data->data->attributes->status;
         $this-> $callstarted = $data->data->attributes->callStarted;
         $this-> $contactid = $data->data->attributes->contactID;
+        */
     }
 
     /*
