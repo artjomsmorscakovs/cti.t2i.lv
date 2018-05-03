@@ -77,7 +77,6 @@ $client = new SuiteCRMClient();
 //$requestObject; - map (json_decode($output))
 
 $arrtocrm = $requestObject->toArray();
-
 $response = $client->findByCall_ID($arrtocrm['data']['attributes']['callid']);
 
 if (isset($response->data->id) && !empty($response->data->id)) {
@@ -86,8 +85,6 @@ if (isset($response->data->id) && !empty($response->data->id)) {
 } else {
     $client->createEntry($arrtocrm);
 }
-
-
 
 
 
