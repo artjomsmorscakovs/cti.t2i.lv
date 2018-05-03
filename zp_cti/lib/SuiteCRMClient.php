@@ -71,7 +71,6 @@ class SuiteCRMClient{
 		
 		$ch = curl_init();
 
-		
 		$parameters = json_encode($parameters);
 		
 		curl_setopt($ch, CURLOPT_URL, $url);

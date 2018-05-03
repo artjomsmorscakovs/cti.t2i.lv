@@ -21,14 +21,14 @@
     $requestObject = $mapper->map(json_decode($decoded), new CallStartedEvent());
     echo '<h1>EXIT</h1>';
 
-    print_r($requestObject);
+    print_r($requestObject->__toArray());
 
 	echo "<br /><br /><br /><br /><br /><br /><br />";
 	
 	//print_r(json_encode($arr));
 
 	$client = new SuiteCRMClient();
-	$client->createEntry($requestObject);
+	$client->createEntry($requestObject->__toArray());
 
 
 ?>
