@@ -8,9 +8,20 @@
 require_once("./lib/jsonhandler.php");
 require_once './lib/RequestFileLog.php';
 require_once './lib/JsonMapper.php';
-// require_once './lib/Events/Event.php';
-require_once './lib/Events/CallStartedEvent.php';
+// require_once './lib/Events/Event.php';\
+
+//Class to work with SuiteCRM
 require_once './lib/SuiteCRMClient.php';
+
+//Specific Event Classes
+require_once './lib/Events/CallStartedEvent.php';
+require_once './lib/Events/CallCompletedEvent.php';
+require_once './lib/Events/CallConnectedEvent.php';
+require_once './lib/Events/VoicemailCreatedEvent.php';
+require_once './lib/Events/VoiceMailMessageDeletedEvent.php';
+require_once './lib/Events/LostCallerAdded.php';
+require_once './lib/Events/LostCallerUpdated.php';
+require_once './lib/Events/LostCallerRemoved.php';
 
  //error_reporting(E_ALL);
  //ini_set('display_errors', 1);
@@ -42,9 +53,7 @@ if(!is_array($decoded)){
 
 
 $string_data = serialize($decoded);
-
 $classname = $decoded->eventType.'Event';
-
 $mapper = new JsonMapper();
 $requestObject = $mapper->map($decoded, new $classname());
 
