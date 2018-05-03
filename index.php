@@ -15,7 +15,7 @@
     $mapper = new JsonMapper();
     //echo $decoded->eventType;
     echo '<h1>ENTER</h1>';
-    $requestObject = $mapper->map(json_decode($decoded), new CallStartedEvent());
+    $requestObject = $mapper->map(json_encode($decoded), new CallStartedEvent());
     echo '<h1>EXIT</h1>';
 
 	echo "<br /><br /><br /><br /><br /><br /><br />";
