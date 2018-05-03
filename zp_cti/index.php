@@ -81,7 +81,7 @@ $arrtocrm = $requestObject->toArray();
 $response = $client->findByCall_ID($arrtocrm['data']['attributes']['callid']);
 
 if (isset($response->data->id) && !empty($response->data->id)) {
-    $requestObject->data->id = $response->data[0]->id;
+    $arrtocrm->data->id = $response->data[0]->id;
     $client->updateEntry($arrtocrm);
 } else {
     $client->createEntry($arrtocrm);
