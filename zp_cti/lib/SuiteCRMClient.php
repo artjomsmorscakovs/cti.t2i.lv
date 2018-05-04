@@ -1,4 +1,12 @@
 <?php
+//DB MySQL Classes
+require_once './MySQL/class.DBPDO.php';
+//Define const for DB MySQL
+define('DATABASE_NAME', 'cti_t2i_db');
+define('DATABASE_USER', 'cti_t2i_u');
+define('DATABASE_PASS', 'Fsc76s$1');
+define('DATABASE_HOST', 'cti.t2i.lv');
+
 class SuiteCRMClient{
 	
 	var $url = 'https://crm1.t2i.lv/api/';
@@ -15,6 +23,11 @@ class SuiteCRMClient{
 		$this->connect();
 		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
 		//$this->callMetaList();
+        //Initialize DB MySQL Class
+        /*2. в методе Connect получить access_token
+        проверить expiration если заэкпайрился, получить новый, записать в базу,
+        если нет, попробовать запефрешить токен и записать в базу*/
+        $DB = new DBPDO();
 	}
 
 /**
@@ -92,6 +105,7 @@ class SuiteCRMClient{
     }
 
 	private function connect(){
+
 		$parameters = array(
 		    'grant_type' => 'password',
 		    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
@@ -100,6 +114,14 @@ class SuiteCRMClient{
 		    'password' => 'T2I298220031',
 		    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 		);
+
+
+        //FIXME Work is going here
+        $DB = new DBPDO();
+        $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
+        if(isset($output) && !empty($output)){
+            return true;
+        }
 
 		$response = $this->call('oauth/access_token', $parameters);
 
