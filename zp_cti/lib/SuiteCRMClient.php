@@ -124,6 +124,14 @@ class SuiteCRMClient{
         }else {
             $response = $this->call('oauth/access_token', $parameters);
             $this->assignHeader($response);
+            $DB->execute("INSERT INTO tokens (client_id,client_secret,scope,access_token,refresh_token,expiration) VALUES(?,?,?,?,?,?);",
+                $parameters['client_id'],
+                $parameters['client_secret'],
+                $parameters['scope'],
+                $this->access_token,
+                $this->refresh_token,
+                $response->expiration
+            );
         }
 	}
 	
