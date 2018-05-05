@@ -120,20 +120,11 @@ class SuiteCRMClient{
         $DB = new DBPDO();
         $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
         if(isset($output) && !empty($output)){
-
+            $this->assignHeader($output);
         }else {
-            
+            $response = $this->call('oauth/access_token', $parameters);
+            $this->assignHeader($response);
         }
-
-		$response = $this->call('oauth/access_token', $parameters);
-
-		$this->access_token = $response->access_token;
-		$this->refresh_token = $response->refresh_token;
-		$this->header = array(
-		    'Content-type: application/vnd.api+json',
-		    'Accept: application/vnd.api+json',
-		    'Authorization: Bearer '.$this->access_token,
-		 );
 	}
 	
 	private function debugCRMCalls($method, $result){
@@ -152,7 +143,21 @@ class SuiteCRMClient{
 			print_r($params);
 		    echo "</pre>";			
 		}
-	}	
+	}
+
+    /**
+     * @param $response
+     */
+    private function assignHeader($response)
+    {
+        $this->access_token = $response->access_token;
+        $this->refresh_token = $response->refresh_token;
+        $this->header = array(
+            'Content-type: application/vnd.api+json',
+            'Accept: application/vnd.api+json',
+            'Authorization: Bearer ' . $this->access_token,
+        );
+    }
 }
 
 ?>
