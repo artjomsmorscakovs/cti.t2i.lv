@@ -23,11 +23,6 @@ class SuiteCRMClient{
 		$this->connect();
 		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
 		//$this->callMetaList();
-        //Initialize DB MySQL Class
-        /*2. в методе Connect получить access_token
-        проверить expiration если заэкпайрился, получить новый, записать в базу,
-        если нет, попробовать запефрешить токен и записать в базу*/
-        $DB = new DBPDO();
 	}
 
 /**
@@ -115,22 +110,56 @@ class SuiteCRMClient{
 		    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
 		);
 
-
-        //FIXME Work is going here
+		//FIXME Work is going here
         $DB = new DBPDO();
+        //Receive ONE row from table tokens
         $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
         if(isset($output) && !empty($output)){
-            $this->assignHeader($output);
+            $today_dt = new DateTime();
+            $expire_dt = new DateTime($output->expiration);
+            if ($expire_dt < $today_dt) {
+                //REFRESH ACCESS TOKEN
+                $parameters = array(
+                    'grant_type' => 'refresh_token',
+                    'refresh_token'=>$output->refresh_token,
+                    'client_id' => $output->client_id,
+                    'client_secret' => $output->client_secret,
+                    );
+                //FIXME method seems to be wrong
+                $response = $this->call('oauth/access_token', $parameters);
+                $this->assignHeader($response);
+
+                //Calculate DateTime when token will be expired
+                $expiration = $this->calculateExpiration($response);
+
+                //NOW WE HAVE TO UPDATE ROW to a new expiration value
+                $DB->execute("UPDATE tokens SET access_token = ?, refresh_token = ?, expiration = ? WHERE cliend_id = ?",
+                    array(
+                        $response->access_token,
+                        $response->refresh_token,
+                        $expiration,
+                        $output->client_id,
+                    )
+                );
+            } else {
+                //GRAB TOKENS AND WORK WITH IT
+                $this->assignHeader($output);
+            }
+        //If output is empty then do as request with pre-defined values
         }else {
+            //Response + Header
             $response = $this->call('oauth/access_token', $parameters);
             $this->assignHeader($response);
+            //Calculate DateTime when token will be expired
+            $expiration = $this->calculateExpiration($response);
+            //Add row to table tokens
             $DB->execute("INSERT INTO tokens (client_id,client_secret,scope,access_token,refresh_token,expiration) VALUES(?,?,?,?,?,?);",array(
                 $parameters['client_id'],
                 $parameters['client_secret'],
                 $parameters['scope'],
-                $this->access_token,
-                $this->refresh_token,
-                $response->expires_in
+                $response->access_token,
+                $response->refresh_token,
+                $expiration
                 )
             );
         }
@@ -166,6 +195,18 @@ class SuiteCRMClient{
             'Accept: application/vnd.api+json',
             'Authorization: Bearer ' . $this->access_token,
         );
+    }
+
+    /**
+     * @param $response
+     * @return DateTime
+     * @throws Exception
+     */
+    private function calculateExpiration($response): DateTime
+    {
+        $expiration = new DateTime();
+        $expiration->add(new DateInterval('PT' . $response->expires_in . 'S'));
+        return $expiration;
     }
 }
 
