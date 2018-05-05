@@ -120,7 +120,9 @@ class SuiteCRMClient{
         $DB = new DBPDO();
         $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
         if(isset($output) && !empty($output)){
-            return true;
+
+        }else {
+            
         }
 
 		$response = $this->call('oauth/access_token', $parameters);
