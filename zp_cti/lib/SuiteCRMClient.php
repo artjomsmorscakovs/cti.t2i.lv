@@ -130,7 +130,7 @@ class SuiteCRMClient{
                 $parameters['scope'],
                 $this->access_token,
                 $this->refresh_token,
-                $response->expiration
+                $response->expires_in
                 )
             );
         }
