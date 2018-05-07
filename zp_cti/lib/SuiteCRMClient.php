@@ -123,9 +123,9 @@ class SuiteCRMClient{
                 echo "REFRESH ACCESS TOKEN";
                 $parameters = array(
                     'grant_type' => 'refresh_token',
-                    'refresh_token'=>$output->refresh_token,
-                    'client_id' => $output->client_id,
-                    'client_secret' => $output->client_secret,
+                    'refresh_token'=>$output['refresh_token'],
+                    'client_id' => $output['client_id'],
+                    'client_secret' => $output['client_secret'],
                     );
                 //FIXME method seems to be wrong
                 $response = $this->call('oauth/access_token', $parameters);
