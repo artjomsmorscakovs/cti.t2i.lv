@@ -137,7 +137,7 @@ class SuiteCRMClient{
                     array(
                         $response->access_token,
                         $response->refresh_token,
-                        $expiration,
+                        $expiration->format("Y-m-d H:i:s"),
                         $output->client_id,
                     )
                 );
@@ -159,7 +159,7 @@ class SuiteCRMClient{
                 $parameters['scope'],
                 $response->access_token,
                 $response->refresh_token,
-                $expiration
+                $expiration->format("Y-m-d H:i:s")
                 )
             );
         }
