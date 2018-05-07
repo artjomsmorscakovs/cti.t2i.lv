@@ -68,7 +68,7 @@ $client = new SuiteCRMClient();
 $arrtocrm = $requestObject->toArray();
 $response = $client->findByCall_ID($arrtocrm['data']['attributes']['callid']);
 
-if (isset($response->data->id) && !empty($response->data->id)) {
+if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
     $arrtocrm['data']['id'] = $response->data[0]->id;
     $client->updateEntry($arrtocrm);
 } else {
