@@ -26,6 +26,7 @@ if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
 }
  
 //Make sure that the content type of the POST request has been set to application/json
+echo '$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : \'\';\n';
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 if(strcasecmp($contentType, 'application/json') != 0){
     throw new Exception('Content type must be: application/json');
