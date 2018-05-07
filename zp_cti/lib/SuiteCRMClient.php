@@ -5,7 +5,7 @@ require_once 'MySQL/class.DBPDO.php';
 define('DATABASE_NAME', 'cti_t2i_db');
 define('DATABASE_USER', 'cti_t2i_u');
 define('DATABASE_PASS', 'Fsc76s$1');
-define('DATABASE_HOST', 'cti.t2i.lv');
+define('DATABASE_HOST', 'localhost:3306');
 
 class SuiteCRMClient{
 	
