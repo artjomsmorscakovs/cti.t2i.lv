@@ -144,9 +144,8 @@ class SuiteCRMClient{
                         $output->client_id,
                     )
                 );
-                //FIXME remove comment
             } else {
-                //GRAB TOKENS AND WORK WITH IT
+                echo "GRAB TOKENS AND WORK WITH IT";
                 $this->assignHeader($output);
             }
         //If output is empty then do as request with pre-defined values
