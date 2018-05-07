@@ -13,7 +13,7 @@ class Event {
 	public  $eventType;
 	public  $version;
 
-	public  $data;
+	public     $data;
 	protected  $datetime;
 	protected	$folderpath;
 	protected	$filename;

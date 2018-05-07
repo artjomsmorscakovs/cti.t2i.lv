@@ -17,16 +17,16 @@ class CallCompletedEvent extends Event{
 
     public function toArray(){
 
-        $callid = $this->data->callid;
+        $callid = $this->data->callID;
         $caller = $this->data->caller;
         $destination = $this->data->destination;
         $direction = $this->data->direction;
         $status = $this->data->status;
-        $callstarted = $this->data->callstarted;
-        $callconnected_c = $this->data->callconnected;
-        $connectiontime_c = $this->data->callconnectiontime;
-        $contactid = $this->data->contactid;
-        $previous_contactid_c = $this->data->previous_contactid;
+        $callstarted = $this->data->callStarted;
+        $callconnected_c = $this->data->callConnected;
+        $connectiontime_c = $this->data->connectionTime;
+        $contactid = $this->data->contactID;
+        $previous_contactid_c = $this->data->previous_contactID;
 
 
         $arr = array(

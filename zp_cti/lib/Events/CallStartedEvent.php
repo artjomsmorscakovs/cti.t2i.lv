@@ -53,13 +53,13 @@ class CallStartedEvent extends Event{
     */
     public function toArray(){
 
-        $callid = $this->data->callid;
+        $callid = $this->data->callID;
         $caller = $this->data->caller;
         $destination = $this->data->destination;
         $direction = $this->data->direction;
         $status = $this->data->status;
-        $callstarted = $this->data->callstarted;
-        $contactid = $this->data->contactid;
+        $callstarted = $this->data->callStarted;
+        $contactid = $this->data->contactID;
 
         $arr = array(
             'data' => array(

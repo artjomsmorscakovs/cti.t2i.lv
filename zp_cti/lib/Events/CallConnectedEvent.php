@@ -32,14 +32,14 @@ class CallConnectedEvent extends Event{
 
     public function toArray(){
 
-        $callid = $this->data->callid;
+        $callid = $this->data->callID;
         $caller = $this->data->caller;
         $destination = $this->data->destination;
         $direction = $this->data->direction;
         $status = $this->data->status;
-        $callstarted = $this->data->callstarted;
-        $callconnected_c = $this->data->callconnected;
-        $contactid = $this->data->contactid;
+        $callstarted = $this->data->callStarted;
+        $callconnected_c = $this->data->callConnected;
+        $contactid = $this->data->contactID;
 
 
         $arr = array(
