@@ -4,6 +4,7 @@ class DBPDO {
 
 	public $pdo;
 	private $error;
+	private $debugSQLcalls = TRUE;
 
 
 	function __construct() {
@@ -46,6 +47,7 @@ class DBPDO {
 
 
 	function execute($query, $values = null){
+		$this->debugSQLcalls($query);
 		if($values == null){
 			$values = array();
 		}else if(!is_array($values)){
@@ -90,5 +92,14 @@ class DBPDO {
 	function lastInsertId(){
 		return $this->pdo->lastInsertId();
 	}
+	
+	function debugSQLcalls($SQL){
+		if($this->debugSQLcalls){			
+			echo "Executing SQL: \n";
+			echo "<pre>";
+			print_r($SQL);
+		    echo "</pre>";			
+		}
+	}	
 
 }
