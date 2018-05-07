@@ -1,6 +1,6 @@
 <?php
 //DB MySQL Classes
-require_once './MySQL/class.DBPDO.php';
+require_once 'MySQL/class.DBPDO.php';
 //Define const for DB MySQL
 define('DATABASE_NAME', 'cti_t2i_db');
 define('DATABASE_USER', 'cti_t2i_u');
