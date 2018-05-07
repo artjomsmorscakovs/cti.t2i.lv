@@ -47,7 +47,7 @@ class DBPDO {
 
 
 	function execute($query, $values = null){
-		$this->debugSQLcalls($query);
+		$this->debugSQLcalls($query, $values);
 		if($values == null){
 			$values = array();
 		}else if(!is_array($values)){
@@ -93,11 +93,11 @@ class DBPDO {
 		return $this->pdo->lastInsertId();
 	}
 	
-	function debugSQLcalls($SQL){
+	function debugSQLcalls($SQL, $values){
 		if($this->debugSQLcalls){			
-			echo "Executing SQL: \n";
+			echo "Executing SQL: $SQL\n";
 			echo "<pre>";
-			print_r($SQL);
+			print_r($values);
 		    echo "</pre>";			
 		}
 	}	

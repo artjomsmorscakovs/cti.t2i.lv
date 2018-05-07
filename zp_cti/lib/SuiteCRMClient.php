@@ -145,13 +145,13 @@ class SuiteCRMClient{
                         $response->access_token,
                         $response->refresh_token,
                         $expiration->format("Y-m-d H:i:s"),
-                        $output->client_id,
+                        $output['client_id'],
                     )
                 );
-				$this->assignHeader($response);
+				$this->assignHeaderArray($response);
             } else {
                 echo "GRAB TOKENS AND WORK WITH IT";
-                $this->assignHeader($output);
+                $this->assignHeaderArray($output);
             }
         //If output is empty then do as request with pre-defined values
         }else {
@@ -214,6 +214,20 @@ class SuiteCRMClient{
             'Authorization: Bearer ' . $this->access_token,
         );
     }
+	
+    /**
+     * @param $response
+     */
+    private function assignHeaderArray($response)
+    {
+        $this->access_token = $response['access_token'];
+        $this->refresh_token = $response['refresh_token'];
+        $this->header = array(
+            'Content-type: application/vnd.api+json',
+            'Accept: application/vnd.api+json',
+            'Authorization: Bearer ' . $this->access_token,
+        );
+    }	
 
     /**
      * @param $response
