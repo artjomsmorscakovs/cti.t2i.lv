@@ -1,84 +1,69 @@
-<?php 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+<?php
+/**
+ * @author Artjoms Morscakovs
+ * @website	https://t2i.lv
+ *
+ */
 
+require_once("./lib/jsonhandler.php");
+require_once './lib/RequestFileLog.php';
+require_once './lib/JsonMapper.php';
+// require_once 'Event.php';\
+
+//Class to work with SuiteCRM
+require_once './lib/SuiteCRMClient.php';
+
+//Specific Event Classes
+require_once './lib/Events/Event.php';
+
+
+//Receive the RAW post data.
+$content = 'a:4:{s:9:"eventType";s:11:"CallStarted";s:7:"version";s:2:"v1";s:4:"type";s:5:"Event";s:4:"data";a:7:{s:6:"status";i:1;s:9:"direction";s:3:"out";s:11:"destination";s:8:"29822031";s:6:"callID";i:1524664459097344;s:6:"caller";s:8:"27771153";s:9:"contactID";i:969;s:11:"callStarted";s:24:"2018-04-25T13:54:19+0000";}}';
+
+//Attempt to decode the incoming RAW post data from JSON.
+$decoded = JsonHandler::decode($content);
+
+
+//If json_decode failed, the JSON is invalid.
 /*
-$ch = curl_init();
-$header = array(
-    'Content-type: application/vnd.api+json',
-    'Accept: application/vnd.api+json',
- );
-$postStr = json_encode(array(
-    'grant_type' => 'password',
-    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
-    'client_secret' => 'd938225b-3177-5ec7-d356-5adde6e5ee3e',
-    'username' => 'admin',
-    'password' => 'T2I298220031',
-    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
-));
-$url = 'https://crm1.t2i.lv/api/oauth/access_token';
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postStr);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-$output = curl_exec($ch);
-
-print_r($output);
-echo 'ok';*/
+if(!is_array($decoded)){
+    throw new Exception('Received content contained invalid JSON!');
+}*/
 
 
-    require_once './lib/SuiteCRMClient.php';
+$classname = $decoded->eventType.'Event';
+$mapper = new JsonMapper();
+$requestObject = $mapper->map($decoded, new $classname());
 
-    $client = new SuiteCRMClient();
+print_r($requestObject);
+echo 'requestObject1';
 
-/*    print_r($client);
-    $data1 = array(
-        "data" => array(
-            "id" => "",
-            "type" => "t2ilc_t2i_lmt_calls",
-            "attributes" => array(
-                "name" => "qweqwewq",
-               // "caller" => "MrSatoshi",
-                //"callid" => "12345678",
-                //"contactid" => "2323rewf4",
-                //"status" => "Failed",
-            ),
-        )
-    );
- * */
+$logger = new RequestFileLog();
+$logger->logRequest($requestObject);
+echo 'logRequest';
+//print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
+//echo 'DOCUMENT_ROOT';
+// $filelog = new RequestFileLog('zp_cti/request_log/966/in/2018/04/26');
+// echo '26';
+//file_put_contents("./request_log/request".date('Y-m-d H:i:s').".xml", $string_data);
 
-    $data = array(
-        "data" => array (
-            "id" => "",
-            "type" => "t2ilc_t2i_lmt_calls",
-            "attributes" => array(
-                "name" => "FinalTest1",
-                //"caller" => "MrSatoshi",
-                "callid" => "12577899767",
-                //"contactid" => "2323rewf4",
-                //"direction" => 1,
-                //"status" => "Success",
-            ),
-        ),
-);
-    // record=e3c55321-f398-2381-2cd4-5ae34c07a3fa
+//print_r($filelog);
+//Process the JSON.
 
-    //$client->createEntry($data); //- CREATES ENTRY. array as an input
-    //$client->retrieveEntry("e3c55321-f398-2381-2cd4-5ae34c07a3fa"); - RETRIEVES ENTRY BY ID
-    //$client->updateEntry($update); - UPDATES ENTRY (id must be included) array as an input
-    //$client->deleteEntry('e3c55321-f398-2381-2cd4-5ae34c07a3fa'); - DELETES ENTRY BY ID
+$client = new SuiteCRMClient();
 
-    //$client->createEntry($data);
-    // $client->updateEntry($data);	
+//$requestObject; - map (json_decode($output))
 
-    $response = $client->findByCall_ID($data['data']['attributes']['callid']);
+$arrtocrm = $requestObject->toArray();
+$response = $client->findByCall_ID($arrtocrm['data']['attributes']['callid']);
 
-    if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {
-        $data['data']['id'] = $response->data[0]->id;
-        $client->updateEntry($data);
-    } else {
-        $client->createEntry($data);
-    }
-    
+if (isset($response->data->id) && !empty($response->data->id)) {
+    $arrtocrm['data']['id'] = $response->data[0]->id;
+    $client->updateEntry($arrtocrm);
+} else {
+    $client->createEntry($arrtocrm);
+}
+
+
+
 ?>
