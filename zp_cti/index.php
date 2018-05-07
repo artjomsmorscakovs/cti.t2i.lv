@@ -20,31 +20,22 @@ require_once './lib/Events/Event.php';
  //ini_set('display_errors', 1);
  
 //Make sure that it is a POST request.
-echo "HELLO!";
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
-    echo 'EXCEPTION';
     throw new Exception('Request method must be POST!');
 }
  
 //Make sure that the content type of the POST request has been set to application/json
-echo '$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : \'\';\n';
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-echo "After";
 if(strcasecmp($contentType, 'application/json') != 0){
     throw new Exception('Content type must be: application/json');
 }
 
-echo 'BEFORE $content = trim(file_get_contents("php://input")); \n';
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
-
-echo '$content = trim(file_get_contents("php://input")); \n';
  
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = JsonHandler::decode($content);
-
-echo '$decoded = JsonHandler::decode($content); \n';
  
 //If json_decode failed, the JSON is invalid.
 /*
@@ -54,13 +45,9 @@ if(!is_array($decoded)){
 
 
 $classname = $decoded->eventType.'Event';
-echo '$classname = $decoded->eventType.\'Event\'; \n';
 $mapper = new JsonMapper();
-echo '$classname = $decoded->eventType.\'Event\'; \n';
 $requestObject = $mapper->map($decoded, new $classname());
-echo '$classname = $decoded->eventType.\'Event\'; \n';
 print_r($requestObject);
-echo 'requestObject1';
 
 $logger = new RequestFileLog();
 $logger->logRequest($requestObject);
