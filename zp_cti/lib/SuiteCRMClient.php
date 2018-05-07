@@ -163,6 +163,7 @@ class SuiteCRMClient{
                 )
             );
         }
+        $this->debugCRMParams('Header',$parameters);
 	}
 	
 	private function debugCRMCalls($method, $result){
