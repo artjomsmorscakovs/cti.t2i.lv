@@ -116,6 +116,7 @@ class SuiteCRMClient{
         $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
         if(isset($output) && !empty($output)){
             echo "<h1>OUTPUT IS NOT NULL</h1>";
+            print_r($output);
             $today_dt = new DateTime();
             $expire_dt = new DateTime($output->expiration);
             if ($expire_dt < $today_dt) {
