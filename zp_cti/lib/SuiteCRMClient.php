@@ -119,7 +119,7 @@ class SuiteCRMClient{
             print_r($output);
             $today_dt = new DateTime();
             $expire_dt = new DateTime($output->expiration);
-            if ($expire_dt < $today_dt) {
+            //if ($expire_dt < $today_dt) {
                 //REFRESH ACCESS TOKEN
                 $parameters = array(
                     'grant_type' => 'refresh_token',
@@ -143,10 +143,11 @@ class SuiteCRMClient{
                         $output->client_id,
                     )
                 );
-            } else {
+                //FIXME remove comment
+            /*} else {
                 //GRAB TOKENS AND WORK WITH IT
                 $this->assignHeader($output);
-            }
+            }*/
         //If output is empty then do as request with pre-defined values
         }else {
             //Response + Header
