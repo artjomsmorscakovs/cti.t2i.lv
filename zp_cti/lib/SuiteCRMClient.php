@@ -135,6 +135,7 @@ class SuiteCRMClient{
                 $expiration = $this->calculateExpiration($response);
 
                 //NOW WE HAVE TO UPDATE ROW to a new expiration value
+                print_r($response);
                 $DB->execute("UPDATE tokens SET access_token = ?, refresh_token = ?, expiration = ? WHERE cliend_id = ?",
                     array(
                         $response->access_token,
