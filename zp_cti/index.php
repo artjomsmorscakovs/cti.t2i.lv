@@ -32,10 +32,13 @@ if(strcasecmp($contentType, 'application/json') != 0){
  
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
+
+echo '$content = trim(file_get_contents("php://input")); \n';
  
 //Attempt to decode the incoming RAW post data from JSON.
 $decoded = JsonHandler::decode($content);
 
+echo '$decoded = JsonHandler::decode($content); \n';
  
 //If json_decode failed, the JSON is invalid.
 /*
@@ -45,8 +48,11 @@ if(!is_array($decoded)){
 
 
 $classname = $decoded->eventType.'Event';
+echo '$classname = $decoded->eventType.\'Event\'; \n';
 $mapper = new JsonMapper();
+echo '$classname = $decoded->eventType.\'Event\'; \n';
 $requestObject = $mapper->map($decoded, new $classname());
+echo '$classname = $decoded->eventType.\'Event\'; \n';
 
 print_r($requestObject);
 echo 'requestObject1';
