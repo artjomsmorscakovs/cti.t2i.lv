@@ -55,7 +55,8 @@ class DBPDO {
 		}
 		$stmt = $this->prep_query($query);
 		$stmt->execute($values);
-		$stmt->debugDumpParams();
+		
+		//$stmt->debugDumpParams();
 		return $stmt;
 	}
 
