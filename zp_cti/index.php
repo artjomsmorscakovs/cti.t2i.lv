@@ -20,6 +20,7 @@ require_once './lib/Events/Event.php';
  //ini_set('display_errors', 1);
  
 //Make sure that it is a POST request.
+echo "HELLO!";
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
     throw new Exception('Request method must be POST!');
 }
