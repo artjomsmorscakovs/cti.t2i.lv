@@ -148,7 +148,7 @@ class SuiteCRMClient{
                         $output['client_id'],
                     )
                 );
-				$this->assignHeaderArray($response);
+				$this->assignHeader($response);
             } else {
                 echo "GRAB TOKENS AND WORK WITH IT";
                 $this->assignHeaderArray($output);
