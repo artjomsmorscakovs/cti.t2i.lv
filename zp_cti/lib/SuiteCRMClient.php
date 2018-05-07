@@ -120,7 +120,7 @@ class SuiteCRMClient{
             $today_dt = new DateTime();
             $expire_dt = new DateTime($output->expiration);
             if ($expire_dt < $today_dt) {
-                //REFRESH ACCESS TOKEN
+                echo "REFRESH ACCESS TOKEN";
                 $parameters = array(
                     'grant_type' => 'refresh_token',
                     'refresh_token'=>$output->refresh_token,
