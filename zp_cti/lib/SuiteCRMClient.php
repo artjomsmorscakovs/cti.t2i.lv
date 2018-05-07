@@ -121,7 +121,7 @@ class SuiteCRMClient{
             echo "<h1>OUTPUT IS NOT NULL</h1>";
             print_r($output);
             $today_dt = new DateTime();
-            $expire_dt = new DateTime('2018-05-07 05:17:05');
+            $expire_dt = new DateTime($output['expiration']);
             if ($expire_dt->format("Y-m-d H:i:s") < $today_dt->format("Y-m-d H:i:s")) {
                 echo "REFRESH ACCESS TOKEN";
                 /*
