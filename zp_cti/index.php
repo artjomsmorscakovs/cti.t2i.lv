@@ -16,8 +16,8 @@ require_once './lib/SuiteCRMClient.php';
 //Specific Event Classes
 require_once './lib/Events/Event.php';
 
- //error_reporting(E_ALL);
- //ini_set('display_errors', 1);
+ error_reporting(E_ALL);
+ ini_set('display_errors', 1);
  
 //Make sure that it is a POST request.
 if(strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0){
