@@ -55,6 +55,7 @@ class DBPDO {
 		}
 		$stmt = $this->prep_query($query);
 		$stmt->execute($values);
+		print_r($stmt->queryString);
 		return $stmt;
 	}
 
