@@ -26,6 +26,7 @@ class DBPDO {
 
 			try {
 				$this->pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_PERSISTENT => true));
+				$this->pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 				return true;
 			} catch (PDOException $e) {
 				$this->error = $e->getMessage();
