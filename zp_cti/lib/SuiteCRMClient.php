@@ -18,6 +18,7 @@ class SuiteCRMClient{
 	var $refresh_token;
 	var $debugCRMcalls = TRUE;
 	var $debugCRMparams = TRUE;
+	var $debugAPIheaders = TRUE;
 	
 	function __construct(){
 		$this->connect();
@@ -74,6 +75,8 @@ class SuiteCRMClient{
     function call($method, $parameters, $request = 'POST')
     {
     	$this->debugCRMParams($method, $parameters);
+    	
+		$this->debugAPIheaders($method);
 		
 		$url = $this->url.$method;
 		
@@ -121,15 +124,16 @@ class SuiteCRMClient{
             $expire_dt = new DateTime('2018-05-07 05:17:05');
             if ($expire_dt->format("Y-m-d H:i:s") < $today_dt->format("Y-m-d H:i:s")) {
                 echo "REFRESH ACCESS TOKEN";
+                /*
                 $parameters = array(
-                    'grant_type' => 'refresh_token',
-                    'refresh_token'=>$output['refresh_token'],
-                    'client_id' => $output['client_id'],
-                    'client_secret' => $output['client_secret'],
-                    );
+                                    'grant_type' => 'refresh_token',
+                                    'refresh_token'=>$output['refresh_token'],
+                                    'client_id' => $output['client_id'],
+                                    'client_secret' => $output['client_secret'],
+                                    );*/
+                
                 //FIXME method seems to be wrong
                 $response = $this->call('oauth/access_token', $parameters);
-                $this->assignHeader($response);
 
                 //Calculate DateTime when token will be expired
                 $expiration = $this->calculateExpiration($response);
@@ -144,6 +148,7 @@ class SuiteCRMClient{
                         $output->client_id,
                     )
                 );
+				$this->assignHeader($response);
             } else {
                 echo "GRAB TOKENS AND WORK WITH IT";
                 $this->assignHeader($output);
@@ -167,7 +172,6 @@ class SuiteCRMClient{
                 )
             );
         }
-        $this->debugCRMParams('Header',$parameters);
 	}
 	
 	private function debugCRMCalls($method, $result){
@@ -187,6 +191,15 @@ class SuiteCRMClient{
 		    echo "</pre>";			
 		}
 	}
+	
+	private function debugAPIheaders($method){
+		if($this->debugAPIheaders){			
+			echo "Method Headers: $method \n";
+			echo "<pre>";
+			print_r($this->header);
+		    echo "</pre>";			
+		}
+	}	
 
     /**
      * @param $response
@@ -207,7 +220,7 @@ class SuiteCRMClient{
      * @return DateTime
      * @throws Exception
      */
-    private function calculateExpiration($response): DateTime
+    private function calculateExpiration($response)
     {
         $expiration = new DateTime();
         $expiration->add(new DateInterval('PT' . $response->expires_in . 'S'));
