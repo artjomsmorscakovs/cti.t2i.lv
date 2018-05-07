@@ -144,12 +144,12 @@ class SuiteCRMClient{
             } else {
                 //GRAB TOKENS AND WORK WITH IT
                 $this->assignHeader($output);
-                print_r($output);
             }
         //If output is empty then do as request with pre-defined values
         }else {
             //Response + Header
             $response = $this->call('oauth/access_token', $parameters);
+            print_r($response);
             $this->assignHeader($response);
             //Calculate DateTime when token will be expired
             $expiration = $this->calculateExpiration($response);
