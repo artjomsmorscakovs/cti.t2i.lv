@@ -30,7 +30,7 @@ class SuiteCRMClient{
  */
 	public function createEntry($data){
 	    //POST /api/v8/modules/{module}/{id}
-	    return $this->call("v8/modules/t2ilc_t2i_lmt_calls", $data);
+	    $this->call("v8/modules/t2ilc_t2i_lmt_calls", $data);
     }
 
     public function retrieveEntry($data){
@@ -43,7 +43,7 @@ class SuiteCRMClient{
     public function updateEntry($data){
 	    //PATCH /api/v8/modules/{module}/{id}
 		if($this->getDataId($data)){
-			return $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,$data,"PATCH");
+		    $this->call("v8/modules/t2ilc_t2i_lmt_calls/".$this->id,$data,"PATCH");
 		}else return FALSE;    		    
     }
 

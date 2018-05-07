@@ -53,7 +53,6 @@ $mapper = new JsonMapper();
 echo '$classname = $decoded->eventType.\'Event\'; \n';
 $requestObject = $mapper->map($decoded, new $classname());
 echo '$classname = $decoded->eventType.\'Event\'; \n';
-
 print_r($requestObject);
 echo 'requestObject1';
 
