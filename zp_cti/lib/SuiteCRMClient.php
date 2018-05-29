@@ -20,8 +20,8 @@ class SuiteCRMClient{
 	var $debugCRMparams = TRUE;
 	var $debugAPIheaders = TRUE;
 	
-	function __construct(){
-		$this->connect();
+	function __construct($contactid = '969'){
+		$this->connect($contactid);
 		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
 		//$this->callMetaList();
 	}
@@ -102,8 +102,9 @@ class SuiteCRMClient{
 		return $response;
     }
 
-	private function connect(){
+	private function connect($contactid){
 
+/*
 		$parameters = array(
 		    'grant_type' => 'password',
 		    'client_id' => 'cab97968-8ff5-b655-9f5e-5ae2fd726492',
@@ -111,26 +112,30 @@ class SuiteCRMClient{
 		    'username' => 'admin',
 		    'password' => 'T2I298220031',
 		    'scope' => 'standard:create standard:read standard:update standard:delete standard:delete standard:relationship:create standard:relationship:read standard:relationship:update standard:relationship:delete'
-		);
+		);*/
+
 
 		//FIXME Work is going here
         $DB = new DBPDO();
         //Receive ONE row from table tokens
-        $output = $DB->fetch("SELECT * FROM tokens WHERE client_id = ?", $parameters['client_id']);
+        $output = $DB->fetch("SELECT * FROM tokens WHERE contactid = ?", $contactid);
         if(isset($output) && !empty($output)){
             echo "<h1>OUTPUT IS NOT NULL</h1>";
-            print_r($output);
+			$this->url = $output['url'];
+            //print_r($output);
             $today_dt = new DateTime();
             $expire_dt = new DateTime($output['expiration']);
             if ($expire_dt->format("Y-m-d H:i:s") < $today_dt->format("Y-m-d H:i:s")) {
                 echo "REFRESH ACCESS TOKEN";
-                /*
+                
                 $parameters = array(
-                                    'grant_type' => 'refresh_token',
-                                    'refresh_token'=>$output['refresh_token'],
+                                    'grant_type' => 'password',
                                     'client_id' => $output['client_id'],
                                     'client_secret' => $output['client_secret'],
-                                    );*/
+                                    'username' => $output['username'],
+                                    'password' => $output['password'],
+                                    'scope' => $output['scope'],
+                                    );
                 
                 //FIXME method seems to be wrong
                 $response = $this->call('oauth/access_token', $parameters);
@@ -140,12 +145,12 @@ class SuiteCRMClient{
 
                 //NOW WE HAVE TO UPDATE ROW to a new expiration value
                 print_r($response);
-                $DB->execute("UPDATE tokens SET access_token = ?, refresh_token = ?, expiration = ? WHERE client_id = ? ",
+                $DB->execute("UPDATE tokens SET access_token = ?, refresh_token = ?, expiration = ? WHERE contactid = ? ",
                     array(
 	                    $response->access_token,
 	                    $response->refresh_token,
 	                    $expiration->format("Y-m-d H:i:s"),
-                       	$output['client_id'],
+                       	$output['contactid'],
                     )
                 );
 				$this->assignHeader($response);
