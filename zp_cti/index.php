@@ -51,7 +51,7 @@ print_r($requestObject);
 
 $logger = new RequestFileLog();
 $logger->logRequest($requestObject);
-echo 'logRequest';
+//echo 'logRequest';
 //print_r($_SERVER[ 'DOCUMENT_ROOT' ]);
 //echo 'DOCUMENT_ROOT';
 // $filelog = new RequestFileLog('zp_cti/request_log/966/in/2018/04/26');
@@ -61,11 +61,15 @@ echo 'logRequest';
  //print_r($filelog);
 //Process the JSON.
 
-$client = new SuiteCRMClient();
+$arrtocrm = $requestObject->toArray();
+
+print_r($requestObject->data->attributes->contactID);
+
+$client = new SuiteCRMClient($arrtocrm['data']['attributes']['contactID']);
 
 //$requestObject; - map (json_decode($output))
 
-$arrtocrm = $requestObject->toArray();
+
 $response = $client->findByCall_ID($arrtocrm['data']['attributes']['callid']);
 
 if (isset($response->data[0]->id) && !empty($response->data[0]->id)) {

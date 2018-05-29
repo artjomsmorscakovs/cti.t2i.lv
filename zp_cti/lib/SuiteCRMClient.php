@@ -18,7 +18,7 @@ class SuiteCRMClient{
 	var $refresh_token;
 	var $debugCRMcalls = TRUE;
 	var $debugCRMparams = TRUE;
-	var $debugAPIheaders = TRUE;
+	var $debugAPIheaders = FALSE;
 	
 	function __construct($contactid = '969'){
 		$this->connect($contactid);
@@ -160,22 +160,26 @@ class SuiteCRMClient{
             }
         //If output is empty then do as request with pre-defined values
         }else {
+        	//AM I THINK HERE SHOULD BE ERROR, BECAUSE WE ARE NOT ALLOWED TO PUSH CONTACTS WHICH ARE NOT IN OUR DB
+ /*
             //Response + Header
-            $response = $this->call('oauth/access_token', $parameters);
-            print_r($response);
-            $this->assignHeader($response);
-            //Calculate DateTime when token will be expired
-            $expiration = $this->calculateExpiration($response);
-            //Add row to table tokens
-            $DB->execute("INSERT INTO tokens (client_id,client_secret,scope,access_token,refresh_token,expiration) VALUES(?,?,?,?,?,?);",array(
-                $parameters['client_id'],
-                $parameters['client_secret'],
-                $parameters['scope'],
-                $response->access_token,
-                $response->refresh_token,
-                $expiration->format("Y-m-d H:i:s")
-                )
-            );
+             $response = $this->call('oauth/access_token', $parameters);
+             print_r($response);
+             $this->assignHeader($response);
+             //Calculate DateTime when token will be expired
+             $expiration = $this->calculateExpiration($response);
+             //Add row to table tokens
+             $DB->execute("INSERT INTO tokens (client_id,client_secret,scope,access_token,refresh_token,expiration) VALUES(?,?,?,?,?,?);",array(
+                 $parameters['client_id'],
+                 $parameters['client_secret'],
+                 $parameters['scope'],
+                 $response->access_token,
+                 $response->refresh_token,
+                 $expiration->format("Y-m-d H:i:s")
+                 )
+             );*/
+             
+ 
         }
 	}
 	
