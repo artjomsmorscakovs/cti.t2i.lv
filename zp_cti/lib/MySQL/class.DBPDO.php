@@ -4,7 +4,7 @@ class DBPDO {
 
 	public $pdo;
 	private $error;
-	private $debugSQLcalls = TRUE;
+	private $debugSQLcalls = FALSE;
 
 
 	function __construct() {

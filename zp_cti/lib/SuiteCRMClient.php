@@ -20,7 +20,7 @@ class SuiteCRMClient{
 	var $debugCRMparams = TRUE;
 	var $debugAPIheaders = TRUE;
 	
-	function __construct($contactid = '969'){
+	function __construct($contactid = '999'){
 		$this->connect($contactid);
 		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
 		//$this->callMetaList();
@@ -144,7 +144,7 @@ class SuiteCRMClient{
                 $expiration = $this->calculateExpiration($response);
 
                 //NOW WE HAVE TO UPDATE ROW to a new expiration value
-                print_r($response);
+                //print_r($response);
                 $DB->execute("UPDATE tokens SET access_token = ?, refresh_token = ?, expiration = ? WHERE contactid = ? ",
                     array(
 	                    $response->access_token,
