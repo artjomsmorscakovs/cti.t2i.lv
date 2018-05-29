@@ -20,7 +20,7 @@ class SuiteCRMClient{
 	var $debugCRMparams = TRUE;
 	var $debugAPIheaders = TRUE;
 	
-	function __construct($contactid = '999'){
+	function __construct($contactid = '969'){
 		$this->connect($contactid);
 		//Uncomment callMetaList() to see details about module t2ilc_t2i_lmt_calls
 		//$this->callMetaList();
