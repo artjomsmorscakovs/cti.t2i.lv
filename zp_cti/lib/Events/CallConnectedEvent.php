@@ -53,7 +53,7 @@ class CallConnectedEvent extends Event{
                     'destination' => $destination,
                     'direction' => $direction,
                     'status' => $status,
-                    'callstarted' => $callstarted,
+                    'callstarted' => $this->parseDateTime($callstarted),
                     'callconnected_c' => $callconnected_c,
                     'contactid' => $contactid
                 )

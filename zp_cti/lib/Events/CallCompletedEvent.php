@@ -40,8 +40,8 @@ class CallCompletedEvent extends Event{
                     'destination' => $destination,
                     'direction' => $direction,
                     'status' => $status,
-                    'callstarted' => $callstarted,
-                    'callconnected_c' => $callconnected_c,
+                    'callstarted' => $this->parseDateTime($callstarted),
+                    'callconnected_c' => $this->parseDateTime($callconnected_c),
                     'connectiontime_c' => $connectiontime_c,
                     'contactid' => $contactid,
                     'previous_contactid_c' => $previous_contactid_c

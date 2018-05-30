@@ -72,7 +72,7 @@ class CallStartedEvent extends Event{
                     'destination' => $destination,
                     'direction' => $direction,
                     'status' => $status,
-                    'callstarted' => $callstarted,
+                    'callstarted' => $this->parseDateTime($callstarted),
                     'contactid' => $contactid
                 )
             )

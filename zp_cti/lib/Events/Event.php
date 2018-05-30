@@ -88,7 +88,13 @@ class Event {
 
 	public function getFileName(){
 		return $this->filename;
+	}
+	
+	public function parseDateTime($apidatetime){
+		$date = substr($apidatetime, 0, strpos($apidatetime,'T'));
+		$time = substr($apidatetime, strpos($apidatetime,'T')+1, 8);
+		
+		return $date.' '.$time;
 	}	
-
 }
 ?>
