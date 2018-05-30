@@ -28,13 +28,12 @@ class CallCompletedEvent extends Event{
         $contactid = $this->data->contactID;
         $previous_contactid_c = $this->data->previous_contactID;
 
-
         $arr = array(
             'data' => array(
                 'id'=>'',
                 'type'=>'t2ilc_t2i_lmt_calls',
                 'attributes' => array(
-                    'name'=> $caller,
+                    'name'=> $caller. '-> '.$destination ,
                     'callid' => $callid,
                     'caller' => $caller,
                     'destination' => $destination,
