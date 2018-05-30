@@ -63,7 +63,7 @@ $logger->logRequest($requestObject);
 
 $arrtocrm = $requestObject->toArray();
 
-print_r($requestObject->data->attributes->contactID);
+print_r($arrtocrm['data']['attributes']['contactID']);
 
 $client = new SuiteCRMClient($arrtocrm['data']['attributes']['contactID']);
 
